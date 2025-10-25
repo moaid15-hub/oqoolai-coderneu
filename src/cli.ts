@@ -39,6 +39,13 @@ import { createAICodeCompletion } from './ai-code-completion.js';
 import { createDatabaseIntegration } from './database-integration.js';
 import { createAPITesting } from './api-testing.js';
 import { registerNewCommands } from './cli-new-commands.js';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8'));
 
 const program = new Command();
 
@@ -46,7 +53,7 @@ const program = new Command();
 program
   .name('oqool')
   .description('🧠 oqool - أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد')
-  .version('3.13.0');
+  .version(packageJson.version);
 
 // أمر تسجيل الدخول
 program
