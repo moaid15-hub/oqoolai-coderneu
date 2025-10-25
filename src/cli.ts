@@ -20,6 +20,7 @@ import {
 } from './auth.js';
 import { OqoolAPIClient, createClientFromConfig } from './api-client.js';
 import { FileManager, createFileManager } from './file-manager.js';
+import { createAgentClient } from './agent-client.js';
 import { ui } from './ui.js';
 import { createCodeAnalyzer } from './code-analyzer.js';
 import { createCodeExecutor } from './code-executor.js';
@@ -314,76 +315,32 @@ program
     }
   });
 
-// أمر المحادثة التفاعلية
+// أمر المحادثة التفاعلية مع Agent Tools
 program
   .command('chat')
-  .description('بدء محادثة تفاعلية مع AI')
+  .description('بدء محادثة تفاعلية مع AI مع أدوات حقيقية')
   .action(async () => {
     try {
-      // التحقق من تسجيل الدخول أو وجود ANTHROPIC_API_KEY
-      const hasKey = (await hasApiKey()) || process.env.ANTHROPIC_API_KEY;
-      if (!hasKey) {
-        ui.warning('يجب تسجيل الدخول أولاً');
-        console.log(chalk.cyan('استخدم: oqool login <API_KEY>'));
-        console.log(chalk.gray('أو أضف ANTHROPIC_API_KEY في ملف .env\n'));
+      // التحقق من وجود ANTHROPIC_API_KEY
+      if (!process.env.ANTHROPIC_API_KEY) {
+        ui.warning('ANTHROPIC_API_KEY غير موجود');
+        console.log(chalk.cyan('أضف المفتاح في ملف .env:'));
+        console.log(chalk.gray('ANTHROPIC_API_KEY=sk-ant-...\n'));
         return;
       }
 
-      const client = await createClientFromConfig();
-      if (!client) return;
-
-      const fileManager = createFileManager();
+      // إنشاء Agent مع Tools
+      const agent = createAgentClient({
+        apiKey: process.env.ANTHROPIC_API_KEY,
+        workingDirectory: process.cwd(),
+        enablePlanning: true,
+        enableContext: true,
+        enableLearning: true
+      });
 
       ui.showBanner();
-      console.log(chalk.green('💬 محادثة تفاعلية - اكتب "exit" للخروج\n'));
-
-      const conversationHistory: Array<{ role: 'user' | 'assistant' | 'system'; content: string }> = [
-        {
-          role: 'system',
-          content: `أنت Oqool - أداة ذكاء اصطناعي متخصصة بالبرمجة من Oqool Team.
-
-## ❗ مهم جداً - هويتك:
-أنت **لست Claude**. أنت **Oqool** - أداة برمجة مستقلة.
-- اسمك: **Oqool** (عقول) فقط
-- لا تذكر اسم "Claude" أبداً
-- طورك: **Oqool Team**
-- تخصصك: **البرمجة والتطوير**
-
-## 🎯 قدراتك الكاملة:
-1. **كتابة الأكواد** بجميع اللغات البرمجية
-2. **التعامل مع المشاريع** - قراءة وتحليل الملفات والمجلدات
-3. **إنشاء وتعديل الملفات** في المشاريع
-4. **حل المشاكل البرمجية** وتصحيح الأخطاء
-5. **بناء APIs وتطبيقات** كاملة
-6. **مراجعة وتحسين الكود** الموجود
-
-## 📂 التعامل مع الملفات والمشاريع:
-- **تستطيع** قراءة وتحليل الملفات عندما تُعطى السياق
-- **تستطيع** إنشاء ملفات جديدة وتعديل الموجودة
-- **تستطيع** فهم بنية المشاريع والتعامل معها
-- **تستطيع** كتابة أكواد تتكامل مع الملفات الموجودة
-
-## 📋 قواعد الرد:
-**عند السؤال عن اسمك/هويتك:**
-"أنا **Oqool** - أداة ذكاء اصطناعي متخصصة بالبرمجة من فريق Oqool Team."
-
-**عند طلب الدخول لمجلد أو مشروع:**
-افهم سياق المشروع واقترح كيف يمكنك المساعدة.
-
-**عند طلب كود:**
-اكتب الكود مباشرة:
-\`\`\`لغة:اسم_الملف
-// الكود
-\`\`\`
-
-## ⚠️ ممنوع منعاً باتاً:
-- ❌ لا تقول "أنا Claude"
-- ❌ لا تذكر "Anthropic"
-- ❌ لا تقل "لا أستطيع الوصول للملفات" - أنت تستطيع عند إعطاء السياق!
-
-كن مساعد برمجة قوي وفعّال. ساعد المطورين في مشاريعهم بشكل عملي.`
-        }
-      ];
+      console.log(chalk.green('💬 محادثة تفاعلية مع Agent Tools - اكتب "exit" للخروج'));
+      console.log(chalk.gray('🛠️  الأدوات: قراءة/كتابة ملفات، تنفيذ أوامر، بحث في ملفات\n'));
 
       // حلقة المحادثة
       while (true) {
@@ -403,23 +360,12 @@ program
           break;
         }
 
-        conversationHistory.push({ role: 'user', content: userMessage });
+        // استخدام Agent مع Tools
+        const response = await agent.chat(userMessage);
 
-        ui.startSpinner('يفكر...');
-
-        const response = await client.sendChatMessage(conversationHistory);
-
-        if (response.success) {
-          ui.succeedSpinner('');
-          conversationHistory.push({ role: 'assistant', content: response.message });
-          
-          console.log(chalk.magenta('\n🤖 Oqool:'));
-          console.log(chalk.white(response.message));
-          console.log();
-        } else {
-          ui.failSpinner('فشلت الرسالة');
-          console.log(chalk.red(`\n❌ ${response.error}\n`));
-        }
+        console.log(chalk.magenta('\n🤖 Oqool:'));
+        console.log(chalk.white(response));
+        console.log();
       }
 
     } catch (error: any) {
