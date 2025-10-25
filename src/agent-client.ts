@@ -209,6 +209,22 @@ export class AgentClient {
   async chat(message: string): Promise<string> {
     return await this.run(message);
   }
+
+  // ============================================
+  // ✅ التحقق من صحة API Key
+  // ============================================
+  async verifyApiKey(): Promise<boolean> {
+    try {
+      await this.client.messages.create({
+        model: this.config.model!,
+        max_tokens: 1,
+        messages: [{ role: 'user', content: 'test' }]
+      });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
   
   // ============================================
   // 🔄 إعادة تعيين المحادثة
