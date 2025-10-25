@@ -1,12 +1,15 @@
 {
   "name": "@oqool/muayadgen",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "description": "AI Coding Agent - منافس Cursor و Windsurf - Context Management + Intelligent Planning + Testing + Git Integration",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
     "muayadgen": "./bin/muayadgen.js",
-    "mg": "./bin/muayadgen.js"
+    "mg": "./bin/mg",
+    "mgr": "./bin/mgr",
+    "mgt": "./bin/mgt",
+    "mgg": "./bin/mgg"
   },
   "scripts": {
     "build": "tsc",

@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+// mgg - اختصار لـ muayadgen git
+process.argv.splice(2, 0, 'git');
+require('./muayadgen.js');
