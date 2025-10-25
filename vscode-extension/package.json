@@ -1,0 +1,77 @@
+{
+  "name": "muayadgen-vscode",
+  "displayName": "MuayadGen - AI Coding Assistant",
+  "description": "AI-powered coding assistant with Arabic support - منافس Cursor و Windsurf",
+  "version": "1.0.0",
+  "publisher": "muayadgen",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "muayadgen.openChat",
+        "title": "MuayadGen: Open Chat"
+      },
+      {
+        "command": "muayadgen.review",
+        "title": "MuayadGen: Review Code"
+      },
+      {
+        "command": "muayadgen.explain",
+        "title": "MuayadGen: Explain Code"
+      },
+      {
+        "command": "muayadgen.fix",
+        "title": "MuayadGen: Fix Error"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "muayadgen.openChat",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "muayadgen",
+          "title": "MuayadGen",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "muayadgen": [
+        {
+          "id": "muayadgen.chatView",
+          "name": "Chat"
+        },
+        {
+          "id": "muayadgen.historyView",
+          "name": "History"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.x",
+    "typescript": "^5.0.0"
+  }
+}
