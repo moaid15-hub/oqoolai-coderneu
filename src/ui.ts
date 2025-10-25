@@ -194,9 +194,9 @@ export class UI {
   // تسمية المزود
   private getProviderLabel(provider: string): string {
     const labels: Record<string, string> = {
-      'openai': 'عقول AI (OpenAI)',
-      'claude': 'Muayad AI (Claude)',
-      'deepseek': 'عقول AI (DeepSeek)',
+      'openai': 'Oqool AI (OpenAI)',
+      'claude': 'Oqool AI (Claude)',
+      'deepseek': 'Oqool AI (DeepSeek)',
       'auto': 'اختيار تلقائي'
     };
     return labels[provider] || provider;
