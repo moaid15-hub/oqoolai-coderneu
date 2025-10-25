@@ -1,7 +1,7 @@
 {
   "name": "@oqool/muayadgen",
-  "version": "4.0.0",
-  "description": "Coding Agent متكامل - يقرأ ويكتب ويعدل الملفات وينفذ الأوامر بذكاء",
+  "version": "4.2.0",
+  "description": "AI Coding Agent - منافس Cursor و Windsurf - Context Management + Intelligent Planning + Testing + Git Integration",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
