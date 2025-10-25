@@ -53,11 +53,11 @@
 | Code Review | محدود | ✅ **8 AI من 5 جوانب** | **MuayadGen** |
 | Performance Monitor | ❌ | ✅ **Dashboard كامل** | **MuayadGen** |
 | Plugin System | محدود | ✅ **مفتوح كامل** | **MuayadGen** |
-| Team Features | 💰 $20/month | ✅ **مجاني** | **MuayadGen** |
+| Team Features | 💰 $20/user | ✅ **$12/user** | **MuayadGen** |
 | Learning System | ❌ | ✅ **يتعلم ويتطور** | **MuayadGen** |
 | Arabic Support | محدود | ✅ **ممتاز 100%** | **MuayadGen** |
 | Open Source | ❌ | ✅ **100%** | **MuayadGen** |
-| Price | $20/month | **مجاني** | **MuayadGen** |
+| Price | $20/month | **$15/month** | **MuayadGen** |
 
 ### **vs Windsurf:**
 
@@ -67,8 +67,8 @@
 | Code Quality Tools | محدود | ✅ **شامل** | **MuayadGen** |
 | Performance Insights | ❌ | ✅ **Real-time** | **MuayadGen** |
 | Extensibility | محدود | ✅ **Plugin System** | **MuayadGen** |
-| Team Sharing | 💰 | ✅ **مجاني** | **MuayadGen** |
-| Price | $15/month | **مجاني** | **MuayadGen** |
+| Team Sharing | 💰 $18/user | ✅ **$12/user** | **MuayadGen** |
+| Price | $15/month | **$15/month** | **Tie** |
 
 **النسبة: 110%+ 🔥**
 
@@ -124,12 +124,12 @@ Real-time Dashboard:
 - Community-driven
 ```
 
-### 6. **100% Free & Open Source** 💎
+### 6. **Affordable & Open Source** 💎
 ```
-- كل الميزات مجانية
-- الكود مفتوح
+- $15/month (أرخص من Cursor)
+- الكود مفتوح 100%
 - بياناتك محلية
-- لا cloud إجباري
+- 14-day free trial
 ```
 
 ---
@@ -282,10 +282,10 @@ export default {
 ✅ **15 ميزة رئيسية** كاملة
 ✅ **8 أنظمة ذكاء** متكاملة
 ✅ **110%+ منافسة** لـ Cursor/Windsurf
-✅ **100% مجاني** و open source
+✅ **$15/month** أرخص من Cursor
 ✅ **دعم عربي ممتاز**
 ✅ **Plugin ecosystem** مفتوح
-✅ **Team features** مجانية
+✅ **Team features** ($12/user أرخص 40%)
 ✅ **Learning system** ذكي
 
 ### **الميزات الفريدة:**
@@ -294,7 +294,7 @@ export default {
 - Performance monitoring dashboard
 - Open plugin system
 - Team learning database
-- 100% free & private
+- Affordable pricing & 14-day trial
 
 ### **النتيجة:**
 **MuayadGen ليس منافساً فقط - هو أقوى! 🔥**
