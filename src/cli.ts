@@ -2491,11 +2491,10 @@ registerNewCommands(program);
 
 // معالجة الأوامر
 export function runCLI(): void {
-  // إذا لم يتم تمرير أي أوامر، عرض الترحيب
+  // إذا لم يتم تمرير أي أوامر، بدء المحادثة التفاعلية تلقائياً
   if (process.argv.length === 2) {
-    ui.showBanner();
-    ui.showWelcome();
-    return;
+    // إضافة أمر chat تلقائياً للدخول للأداة مباشرة
+    process.argv.push('chat');
   }
 
   program.parse(process.argv);
