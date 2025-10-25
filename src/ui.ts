@@ -8,6 +8,12 @@ import ora, { Ora } from 'ora';
 import boxen from 'boxen';
 import Table from 'cli-table3';
 import gradient from 'gradient-string';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export class UI {
   private spinner: Ora | null = null;
@@ -45,7 +51,9 @@ export class UI {
     console.log(this.gradients.ocean(banner));
 
     // Read version from package.json
-    const packageJson = require('../package.json');
+    const packageJson = JSON.parse(
+      readFileSync(join(__dirname, '../package.json'), 'utf-8')
+    );
 
     const infoBox = boxen(
       this.colors.gold.bold('أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد') + '\n\n' +
