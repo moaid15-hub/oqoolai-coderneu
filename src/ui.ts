@@ -59,7 +59,7 @@ export class UI {
       this.colors.gold.bold('أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد') + '\n\n' +
       this.colors.dim('النسخة: ') + this.colors.primary.bold(packageJson.version) + '\n' +
       this.colors.dim('الفريق: ') + this.colors.gold('Oqool Team') + '\n' +
-      this.colors.dim('npm: ') + this.colors.info('https://npmjs.com/package/@oqool/oqool'),
+      this.colors.dim('الموقع: ') + this.colors.info('https://www.oqool.net/'),
       {
         padding: 1,
         margin: 1,
