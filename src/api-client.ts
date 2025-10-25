@@ -6,6 +6,11 @@
 import axios, { AxiosInstance } from 'axios';
 import chalk from 'chalk';
 import { loadConfig } from './auth.js';
+import { createLocalClaudeClient } from './local-oqool-client.js';
+import dotenv from 'dotenv';
+
+// تحميل متغيرات البيئة
+dotenv.config();
 
 export interface Message {
   role: 'user' | 'assistant' | 'system';
@@ -165,12 +170,23 @@ ${contextMessage}
 }
 
 // إنشاء عميل API من التكوين المحفوظ
-export async function createClientFromConfig(): Promise<OqoolAPIClient | null> {
+export async function createClientFromConfig(): Promise<any | null> {
+  // الأولوية لـ ANTHROPIC_API_KEY (اتصال مباشر بـ Claude)
+  if (process.env.ANTHROPIC_API_KEY) {
+    console.log(chalk.cyan('🔗 استخدام Claude API مباشرة...\n'));
+    const localClient = createLocalClaudeClient();
+    if (localClient) {
+      return localClient;
+    }
+  }
+
+  // إذا لم يتوفر، استخدام backend server
   const config = await loadConfig();
-  
+
   if (!config || !config.apiKey) {
     console.log(chalk.yellow('⚠️  لم تسجل دخول بعد'));
-    console.log(chalk.cyan('استخدم: oqool-code login <API_KEY>'));
+    console.log(chalk.cyan('استخدم: oqool login <API_KEY>'));
+    console.log(chalk.gray('أو أضف ANTHROPIC_API_KEY في ملف .env'));
     return null;
   }
 
