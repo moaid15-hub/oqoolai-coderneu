@@ -7,6 +7,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { TOOL_DEFINITIONS, executeTool } from './tools.js';
 import { ContextManager } from './context-manager.js';
 import { IntelligentPlanner } from './planner.js';
+import { LearningSystem } from './learning-system.js';
 import chalk from 'chalk';
 
 export interface AgentConfig {
@@ -16,6 +17,7 @@ export interface AgentConfig {
   workingDirectory?: string;
   enablePlanning?: boolean; // تفعيل التخطيط الذكي
   enableContext?: boolean; // تفعيل Context Management
+  enableLearning?: boolean; // تفعيل التعلم من الأخطاء
 }
 
 export class AgentClient {
@@ -24,6 +26,7 @@ export class AgentClient {
   private conversationHistory: Array<any> = [];
   private contextManager?: ContextManager;
   private planner?: IntelligentPlanner;
+  private learningSystem?: LearningSystem;
 
   constructor(config: AgentConfig) {
     this.config = {
@@ -32,6 +35,7 @@ export class AgentClient {
       workingDirectory: process.cwd(),
       enablePlanning: true,
       enableContext: true,
+      enableLearning: true,
       ...config
     };
 
@@ -47,6 +51,18 @@ export class AgentClient {
     // تهيئة Planner
     if (this.config.enablePlanning) {
       this.planner = new IntelligentPlanner(this.config.apiKey);
+    }
+
+    // تهيئة Learning System
+    if (this.config.enableLearning) {
+      this.learningSystem = new LearningSystem(
+        this.config.workingDirectory!,
+        this.config.apiKey
+      );
+      // تحميل البيانات المحفوظة
+      this.learningSystem.load().catch(() => {
+        // تجاهل الأخطاء في التحميل
+      });
     }
   }
   
@@ -107,6 +123,28 @@ export class AgentClient {
 
       } catch (error: any) {
         console.error(chalk.red(`\n❌ خطأ: ${error.message}`));
+
+        // تسجيل الخطأ في نظام التعلم
+        if (this.learningSystem) {
+          const errorId = await this.learningSystem.recordError(error.message, {
+            command: userMessage
+          });
+
+          // محاولة إيجاد حل من التعلم السابق
+          const solution = await this.learningSystem.findSolution(error.message);
+
+          if (solution) {
+            console.log(chalk.green('💡 وجدت حل من الخبرة السابقة!'));
+            console.log(chalk.gray(solution));
+
+            // تسجيل نجاح الحل
+            await this.learningSystem.recordSuccess(errorId, solution);
+
+            // المحاولة مرة أخرى
+            continue;
+          }
+        }
+
         return `حدث خطأ: ${error.message}`;
       }
     }
