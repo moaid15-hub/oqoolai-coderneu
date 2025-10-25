@@ -1,9 +1,9 @@
 {
-  "name": "muayadgen-vscode",
-  "displayName": "MuayadGen - AI Coding Assistant",
+  "name": "oqool-vscode",
+  "displayName": "oqool - AI Coding Assistant",
   "description": "AI-powered coding assistant with Arabic support - منافس Cursor و Windsurf",
   "version": "1.0.0",
-  "publisher": "muayadgen",
+  "publisher": "oqool",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -19,25 +19,25 @@
   "contributes": {
     "commands": [
       {
-        "command": "muayadgen.openChat",
-        "title": "MuayadGen: Open Chat"
+        "command": "oqool.openChat",
+        "title": "oqool: Open Chat"
       },
       {
-        "command": "muayadgen.review",
-        "title": "MuayadGen: Review Code"
+        "command": "oqool.review",
+        "title": "oqool: Review Code"
       },
       {
-        "command": "muayadgen.explain",
-        "title": "MuayadGen: Explain Code"
+        "command": "oqool.explain",
+        "title": "oqool: Explain Code"
       },
       {
-        "command": "muayadgen.fix",
-        "title": "MuayadGen: Fix Error"
+        "command": "oqool.fix",
+        "title": "oqool: Fix Error"
       }
     ],
     "keybindings": [
       {
-        "command": "muayadgen.openChat",
+        "command": "oqool.openChat",
         "key": "ctrl+shift+m",
         "mac": "cmd+shift+m"
       }
@@ -45,20 +45,20 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "muayadgen",
-          "title": "MuayadGen",
+          "id": "oqool",
+          "title": "oqool",
           "icon": "resources/icon.svg"
         }
       ]
     },
     "views": {
-      "muayadgen": [
+      "oqool": [
         {
-          "id": "muayadgen.chatView",
+          "id": "oqool.chatView",
           "name": "Chat"
         },
         {
-          "id": "muayadgen.historyView",
+          "id": "oqool.historyView",
           "name": "History"
         }
       ]

@@ -182,7 +182,7 @@ export class PerformanceMonitor extends EventEmitter {
   // ============================================
   private async save(): Promise<void> {
     try {
-      const dataDir = join(this.workingDirectory, '.muayadgen', 'metrics');
+      const dataDir = join(this.workingDirectory, '.oqool', 'metrics');
       await fs.ensureDir(dataDir);
 
       const filename = `metrics-${Date.now()}.json`;

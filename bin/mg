@@ -1,3 +1,0 @@
-#!/usr/bin/env node
-// mg - اختصار لـ muayadgen
-require('./muayadgen.js');

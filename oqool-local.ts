@@ -7,7 +7,7 @@
 import dotenv from 'dotenv';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import { LocalClaudeClient, createLocalClaudeClient } from './src/local-claude-client.js';
+import { LocalClaudeClient, createLocalClaudeClient } from './src/local-oqool-client.js';
 import { createFileManager } from './src/file-manager.js';
 import { ui } from './src/ui.js';
 

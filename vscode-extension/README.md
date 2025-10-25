@@ -1,4 +1,4 @@
-# MuayadGen VS Code Extension
+# oqool VS Code Extension
 
 ## Features
 
@@ -12,7 +12,7 @@
 ## Installation
 
 1. Install from VS Code Marketplace
-2. Configure API key: `Ctrl+Shift+P` → "MuayadGen: Configure"
+2. Configure API key: `Ctrl+Shift+P` → "oqool: Configure"
 3. Start using: `Ctrl+Shift+M`
 
 ## Usage
@@ -21,25 +21,25 @@
 Press `Ctrl+Shift+M` (or `Cmd+Shift+M` on Mac)
 
 ### Review Code
-Right-click → "MuayadGen: Review Code"
+Right-click → "oqool: Review Code"
 
 ### Explain Code
-Select code → Right-click → "MuayadGen: Explain"
+Select code → Right-click → "oqool: Explain"
 
 ## Commands
 
-- `MuayadGen: Open Chat` - فتح المحادثة
-- `MuayadGen: Review Code` - مراجعة الكود
-- `MuayadGen: Explain Code` - شرح الكود
-- `MuayadGen: Fix Error` - إصلاح خطأ
+- `oqool: Open Chat` - فتح المحادثة
+- `oqool: Review Code` - مراجعة الكود
+- `oqool: Explain Code` - شرح الكود
+- `oqool: Fix Error` - إصلاح خطأ
 
 ## Settings
 
 ```json
 {
-  "muayadgen.apiKey": "your-api-key",
-  "muayadgen.model": "claude-sonnet-4-20250514",
-  "muayadgen.language": "ar" // or "en"
+  "oqool.apiKey": "your-api-key",
+  "oqool.model": "claude-sonnet-4-20250514",
+  "oqool.language": "ar" // or "en"
 }
 ```
 

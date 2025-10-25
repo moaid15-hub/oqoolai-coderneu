@@ -63,7 +63,7 @@ export class LearningSystem {
 
   constructor(workingDirectory: string, apiKey?: string) {
     this.workingDirectory = workingDirectory;
-    this.learningPath = join(workingDirectory, '.muayadgen', 'learning');
+    this.learningPath = join(workingDirectory, '.oqool', 'learning');
 
     if (apiKey) {
       this.client = new Anthropic({ apiKey });

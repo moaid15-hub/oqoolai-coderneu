@@ -1,8 +1,8 @@
-# 🚀 MuayadGen v4.2 - Advanced Features
+# 🚀 oqool v4.2 - Advanced Features
 
 ## نظرة عامة
 
-تم تطوير MuayadGen ليصبح **منافس حقيقي لـ Cursor و Windsurf** بنسبة 95%+!
+تم تطوير oqool ليصبح **منافس حقيقي لـ Cursor و Windsurf** بنسبة 95%+!
 
 ---
 
@@ -255,7 +255,7 @@ const commits = await git.getRecentCommits(5);
 
 ## 📊 المقارنة مع Cursor/Windsurf
 
-| الميزة | Cursor | Windsurf | **MuayadGen v4.2** |
+| الميزة | Cursor | Windsurf | **oqool v4.2** |
 |--------|--------|----------|-------------------|
 | Context Management | ✅ | ✅ | ✅ |
 | Intelligent Planning | ✅ | ✅ | ✅ |
@@ -323,7 +323,7 @@ node test-planning.js
 
 ## 🎉 النتيجة
 
-**MuayadGen الآن يمتلك:**
+**oqool الآن يمتلك:**
 
 - ✅ Context Management - يفهم المشروع كاملاً
 - ✅ Intelligent Planning - يخطط بذكاء

@@ -1,4 +1,4 @@
-# 🎊 MuayadGen v5.0 - The Ultimate AI Coding Assistant
+# 🎊 oqool v5.0 - The Ultimate AI Coding Assistant
 
 ## 🏆 التقييم النهائي: 110%+ منافس لـ Cursor و Windsurf
 
@@ -47,27 +47,27 @@
 
 ### **vs Cursor:**
 
-| الميزة | Cursor | **MuayadGen v5.0** | الفائز |
+| الميزة | Cursor | **oqool v5.0** | الفائز |
 |--------|--------|--------------------|--------|
-| Context Understanding | ✅ محدود | ✅ **متقدم + Cache** | **MuayadGen** |
-| Code Review | محدود | ✅ **8 AI من 5 جوانب** | **MuayadGen** |
-| Performance Monitor | ❌ | ✅ **Dashboard كامل** | **MuayadGen** |
-| Plugin System | محدود | ✅ **مفتوح كامل** | **MuayadGen** |
-| Team Features | 💰 $20/user | ✅ **$12/user** | **MuayadGen** |
-| Learning System | ❌ | ✅ **يتعلم ويتطور** | **MuayadGen** |
-| Arabic Support | محدود | ✅ **ممتاز 100%** | **MuayadGen** |
-| Open Source | ❌ | ✅ **100%** | **MuayadGen** |
-| Price | $20/month | **$15/month** | **MuayadGen** |
+| Context Understanding | ✅ محدود | ✅ **متقدم + Cache** | **oqool** |
+| Code Review | محدود | ✅ **8 AI من 5 جوانب** | **oqool** |
+| Performance Monitor | ❌ | ✅ **Dashboard كامل** | **oqool** |
+| Plugin System | محدود | ✅ **مفتوح كامل** | **oqool** |
+| Team Features | 💰 $20/user | ✅ **$12/user** | **oqool** |
+| Learning System | ❌ | ✅ **يتعلم ويتطور** | **oqool** |
+| Arabic Support | محدود | ✅ **ممتاز 100%** | **oqool** |
+| Open Source | ❌ | ✅ **100%** | **oqool** |
+| Price | $20/month | **$15/month** | **oqool** |
 
 ### **vs Windsurf:**
 
-| الميزة | Windsurf | **MuayadGen v5.0** | الفائز |
+| الميزة | Windsurf | **oqool v5.0** | الفائز |
 |--------|----------|--------------------|--------|
-| AI Capabilities | ✅ | ✅ **+ Multi-personality** | **MuayadGen** |
-| Code Quality Tools | محدود | ✅ **شامل** | **MuayadGen** |
-| Performance Insights | ❌ | ✅ **Real-time** | **MuayadGen** |
-| Extensibility | محدود | ✅ **Plugin System** | **MuayadGen** |
-| Team Sharing | 💰 $18/user | ✅ **$12/user** | **MuayadGen** |
+| AI Capabilities | ✅ | ✅ **+ Multi-personality** | **oqool** |
+| Code Quality Tools | محدود | ✅ **شامل** | **oqool** |
+| Performance Insights | ❌ | ✅ **Real-time** | **oqool** |
+| Extensibility | محدود | ✅ **Plugin System** | **oqool** |
+| Team Sharing | 💰 $18/user | ✅ **$12/user** | **oqool** |
 | Price | $15/month | **$15/month** | **Tie** |
 
 **النسبة: 110%+ 🔥**
@@ -165,38 +165,38 @@ Real-time Dashboard:
 
 ### **التنصيب:**
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ### **الإعداد:**
 ```bash
-muayadgen login sk-ant-your-key
+oqool login sk-ant-your-key
 ```
 
 ### **الأوامر الأساسية:**
 ```bash
 # اختصارات سريعة
-mg "اصنع تطبيق React"          # muayadgen
-mgr                             # muayadgen review
-mgt                             # muayadgen test
-mgg smart-commit                # muayadgen git
+mg "اصنع تطبيق React"          # oqool
+mgr                             # oqool review
+mgt                             # oqool test
+mgg smart-commit                # oqool git
 
 # مراجعة الكود
-muayadgen review --auto
+oqool review --auto
 
 # مراقبة الأداء
-muayadgen monitor --dashboard
+oqool monitor --dashboard
 
 # Team collaboration
-muayadgen team create "Frontend Team"
-muayadgen share-solution <error-id>
+oqool team create "Frontend Team"
+oqool share-solution <error-id>
 ```
 
 ### **Config Presets:**
 ```bash
-muayadgen init --preset react     # React + TypeScript + Vite
-muayadgen init --preset nextjs    # Next.js App Router
-muayadgen init --preset express   # Express API
+oqool init --preset react     # React + TypeScript + Vite
+oqool init --preset nextjs    # Next.js App Router
+oqool init --preset express   # Express API
 ```
 
 ---
@@ -205,7 +205,7 @@ muayadgen init --preset express   # Express API
 
 ### **Context + Planning + Learning:**
 ```typescript
-import { createAgentClient } from '@oqool/muayadgen';
+import { createAgentClient } from '@oqool/oqool';
 
 const agent = createAgentClient({
   apiKey: 'your-key',
@@ -219,7 +219,7 @@ await agent.run('أضف نظام authentication');
 
 ### **Code Review:**
 ```typescript
-import { CodeReviewer } from '@oqool/muayadgen';
+import { CodeReviewer } from '@oqool/oqool';
 
 const reviewer = new CodeReviewer(apiKey, process.cwd());
 const result = await reviewer.review();
@@ -235,7 +235,7 @@ const result = await reviewer.review();
 
 ### **Performance Monitor:**
 ```typescript
-import { getMonitor } from '@oqool/muayadgen';
+import { getMonitor } from '@oqool/oqool';
 
 const monitor = getMonitor();
 monitor.start();
@@ -250,7 +250,7 @@ monitor.displayDashboard();
 
 ### **Plugin Development:**
 ```typescript
-import { MuayadGenPlugin } from '@oqool/muayadgen';
+import { oqoolPlugin } from '@oqool/oqool';
 
 export default {
   name: 'my-plugin',
@@ -270,14 +270,14 @@ export default {
       // ...
     }
   }]
-} as MuayadGenPlugin;
+} as oqoolPlugin;
 ```
 
 ---
 
 ## 🎊 الخلاصة
 
-### **MuayadGen v5.0 الآن:**
+### **oqool v5.0 الآن:**
 
 ✅ **15 ميزة رئيسية** كاملة
 ✅ **8 أنظمة ذكاء** متكاملة
@@ -297,7 +297,7 @@ export default {
 - Affordable pricing & 14-day trial
 
 ### **النتيجة:**
-**MuayadGen ليس منافساً فقط - هو أقوى! 🔥**
+**oqool ليس منافساً فقط - هو أقوى! 🔥**
 
 ---
 
@@ -321,12 +321,12 @@ export default {
 
 ---
 
-**🎉 MuayadGen v5.0 - The Future of AI Coding is Here! 🚀**
+**🎉 oqool v5.0 - The Future of AI Coding is Here! 🚀**
 
 **صُنع بـ ❤️ و 🔥 بواسطة Dr. Muayad و Claude**
 
 **License:** MIT
-**Repository:** https://github.com/moaid15-hub/muayadgen
-**Documentation:** https://muayadgen.dev (soon)
+**Repository:** https://github.com/moaid15-hub/oqool
+**Documentation:** https://oqool.dev (soon)
 
 **أهلاً بك في مستقبل البرمجة الذكية! 🎊**

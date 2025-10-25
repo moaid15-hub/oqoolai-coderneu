@@ -27,7 +27,7 @@
 **التأثير:** ضخم
 
 #### لماذا؟
-- **الاستخدام اليومي**: يجعل MuayadGen جزءاً من workflow المطور
+- **الاستخدام اليومي**: يجعل oqool جزءاً من workflow المطور
 - **تجربة أفضل**: UI جميلة بدل CLI
 - **تكامل كامل**: مع ملفات المشروع مباشرة
 
@@ -84,7 +84,7 @@
 
 #### مثال الاستخدام:
 ```bash
-muayadgen review --auto
+oqool review --auto
 
 📊 Code Review Report:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -142,7 +142,7 @@ Overall Score: 7.5/10
 http://localhost:3333/dashboard
 
 ┌─────────────────────────────────────┐
-│  📊 MuayadGen Performance Monitor   │
+│  📊 oqool Performance Monitor   │
 ├─────────────────────────────────────┤
 │                                     │
 │  CPU: ████████░░ 80%               │
@@ -163,14 +163,14 @@ http://localhost:3333/dashboard
 #### التكامل:
 ```typescript
 // في الكود
-import { monitor } from '@oqool/muayadgen/monitor';
+import { monitor } from '@oqool/oqool/monitor';
 
 monitor.track('api_call', async () => {
   return await fetchData();
 });
 
 // تلقائي
-muayadgen monitor --start
+oqool monitor --start
 ```
 
 ---
@@ -188,7 +188,7 @@ muayadgen monitor --start
 #### البنية:
 ```typescript
 // Plugin API
-interface MuayadGenPlugin {
+interface oqoolPlugin {
   name: string;
   version: string;
 
@@ -233,21 +233,21 @@ export default {
 #### استخدام:
 ```bash
 # تنصيب plugin
-muayadgen plugin install @muayadgen/docker
+oqool plugin install @oqool/docker
 
 # استخدام
-muayadgen docker:build
+oqool docker:build
 
 # قائمة plugins
-muayadgen plugin list
+oqool plugin list
 ```
 
 #### Plugins مقترحة:
-- `@muayadgen/docker` - Docker integration
-- `@muayadgen/kubernetes` - K8s management
-- `@muayadgen/database` - DB tools
-- `@muayadgen/deploy` - Deployment
-- `@muayadgen/analytics` - Analytics
+- `@oqool/docker` - Docker integration
+- `@oqool/kubernetes` - K8s management
+- `@oqool/database` - DB tools
+- `@oqool/deploy` - Deployment
+- `@oqool/analytics` - Analytics
 
 ---
 
@@ -276,17 +276,17 @@ muayadgen plugin list
 #### مثال:
 ```bash
 # إنشاء team
-muayadgen team create "Frontend Team"
+oqool team create "Frontend Team"
 
 # مشاركة حل
-muayadgen share-solution <error-id>
+oqool share-solution <error-id>
 # → يحفظ في team database
 
 # عضو آخر يواجه نفس الخطأ
 # → يحصل على الحل تلقائياً!
 
 # Team stats
-muayadgen team stats
+oqool team stats
 
 Team: Frontend Team
 ━━━━━━━━━━━━━━━━━━━━━
@@ -300,7 +300,7 @@ Team: Frontend Team
 #### Cloud Sync:
 ```typescript
 // اختياري - للفرق الموزعة
-muayadgen cloud sync --team "frontend"
+oqool cloud sync --team "frontend"
 
 // يزامن:
 // - Error solutions
@@ -331,7 +331,7 @@ muayadgen cloud sync --team "frontend"
 
 ## 🎯 المقارنة بعد التنفيذ
 
-| الميزة | Cursor | Windsurf | **MuayadGen Future** |
+| الميزة | Cursor | Windsurf | **oqool Future** |
 |--------|--------|----------|---------------------|
 | Context Management | ✅ | ✅ | ✅ |
 | Planning | ✅ | ✅ | ✅ |
@@ -385,18 +385,18 @@ muayadgen cloud sync --team "frontend"
 ### 1. **Command Aliases** (ساعة واحدة)
 ```bash
 # اختصارات سهلة
-mg = muayadgen
-mgr = muayadgen review
-mgt = muayadgen test
-mgg = muayadgen git-smart-commit
+mg = oqool
+mgr = oqool review
+mgt = oqool test
+mgg = oqool git-smart-commit
 ```
 
 ### 2. **Config Presets** (ساعتين)
 ```bash
 # presets جاهزة
-muayadgen init --preset react
-muayadgen init --preset nextjs
-muayadgen init --preset express
+oqool init --preset react
+oqool init --preset nextjs
+oqool init --preset express
 ```
 
 ### 3. **Better Error Messages** (3 ساعات)
@@ -413,7 +413,7 @@ muayadgen init --preset express
 
 ### 4. **Auto Documentation** (4 ساعات)
 ```bash
-muayadgen docs generate --auto
+oqool docs generate --auto
 
 # ينتج:
 # - API.md
@@ -424,9 +424,9 @@ muayadgen docs generate --auto
 
 ### 5. **Snippet Library** (3 ساعات)
 ```bash
-muayadgen snippet add "react-component"
-muayadgen snippet list
-muayadgen snippet use "api-endpoint"
+oqool snippet add "react-component"
+oqool snippet list
+oqool snippet use "api-endpoint"
 ```
 
 ---
@@ -493,6 +493,6 @@ muayadgen snippet use "api-endpoint"
 
 ---
 
-**🎊 بهذه الميزات، MuayadGen سيكون أقوى من Cursor و Windsurf! 🚀**
+**🎊 بهذه الميزات، oqool سيكون أقوى من Cursor و Windsurf! 🚀**
 
 **السؤال:** من أي واحدة نبدأ؟

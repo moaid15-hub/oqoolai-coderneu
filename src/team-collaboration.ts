@@ -43,7 +43,7 @@ export class TeamCollaboration {
   constructor(teamId: string, workingDirectory: string) {
     this.teamId = teamId;
     this.workingDirectory = workingDirectory;
-    this.teamDir = join(workingDirectory, '.muayadgen', 'team', teamId);
+    this.teamDir = join(workingDirectory, '.oqool', 'team', teamId);
   }
 
   // ============================================

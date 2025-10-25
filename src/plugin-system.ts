@@ -20,7 +20,7 @@ export interface Command {
   action: (...args: any[]) => Promise<void>;
 }
 
-export interface MuayadGenPlugin {
+export interface oqoolPlugin {
   name: string;
   version: string;
   description?: string;
@@ -39,11 +39,11 @@ export interface MuayadGenPlugin {
 }
 
 export class PluginManager {
-  private plugins: Map<string, MuayadGenPlugin> = new Map();
+  private plugins: Map<string, oqoolPlugin> = new Map();
   private pluginDir: string;
 
   constructor(workingDirectory: string) {
-    this.pluginDir = join(workingDirectory, '.muayadgen', 'plugins');
+    this.pluginDir = join(workingDirectory, '.oqool', 'plugins');
   }
 
   // ============================================
@@ -55,7 +55,7 @@ export class PluginManager {
 
       // استيراد الـ plugin
       const pluginModule = await import(pluginPath);
-      const plugin: MuayadGenPlugin = pluginModule.default || pluginModule;
+      const plugin: oqoolPlugin = pluginModule.default || pluginModule;
 
       // التحقق من البنية
       if (!plugin.name || !plugin.version) {
@@ -130,14 +130,14 @@ export class PluginManager {
   // ============================================
   // 📋 قائمة الـ Plugins المحملة
   // ============================================
-  list(): MuayadGenPlugin[] {
+  list(): oqoolPlugin[] {
     return Array.from(this.plugins.values());
   }
 
   // ============================================
   // 🎯 تشغيل Hook لكل الـ Plugins
   // ============================================
-  async triggerHook(hookName: keyof MuayadGenPlugin, ...args: any[]): Promise<void> {
+  async triggerHook(hookName: keyof oqoolPlugin, ...args: any[]): Promise<void> {
     for (const plugin of this.plugins.values()) {
       const hook = plugin[hookName] as any;
 
@@ -193,11 +193,11 @@ export class PluginManager {
 // ============================================
 // 📦 مثال Plugin
 // ============================================
-export const examplePlugin: MuayadGenPlugin = {
+export const examplePlugin: oqoolPlugin = {
   name: 'example-plugin',
   version: '1.0.0',
   description: 'مثال على plugin',
-  author: 'MuayadGen Team',
+  author: 'oqool Team',
 
   onLoad: async () => {
     console.log('Example plugin loaded!');

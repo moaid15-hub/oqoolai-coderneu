@@ -1,4 +1,0 @@
-#!/usr/bin/env node
-// mgt - اختصار لـ muayadgen test
-process.argv.splice(2, 0, 'test');
-require('./muayadgen.js');

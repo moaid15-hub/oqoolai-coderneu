@@ -15,8 +15,8 @@ const program = new Command();
 
 // معلومات البرنامج
 program
-  .name('muayadgen')
-  .description('🧠 MuayadGen - Agent Edition')
+  .name('oqool')
+  .description('🧠 oqool - Agent Edition')
   .version('4.0.0');
 
 // ============================================
@@ -34,7 +34,7 @@ program
       const config = await loadConfig();
       if (!config?.apiKey) {
         console.log(chalk.red('\n❌ لم تسجل الدخول!'));
-        console.log(chalk.yellow('استخدم: muayadgen login <API_KEY>'));
+        console.log(chalk.yellow('استخدم: oqool login <API_KEY>'));
         return;
       }
       
@@ -85,7 +85,7 @@ async function interactiveMode(agent: any): Promise<void> {
     }
     
     const response = await agent.chat(message);
-    console.log(chalk.green('\n🤖 MuayadGen:'));
+    console.log(chalk.green('\n🤖 oqool:'));
     console.log(response + '\n');
   }
 }
@@ -97,7 +97,7 @@ function displayBanner(): void {
   const title = gradient.pastel.multiline([
     '╔══════════════════════════════════════════════════════════╗',
     '║                                                          ║',
-    '║     🧠  MuayadGen - Agent Edition  🚀                    ║',
+    '║     🧠  oqool - Agent Edition  🚀                    ║',
     '║                                                          ║',
     '║     Coding Agent مع أدوات حقيقية                        ║',
     '║     By: Dr. Muayad                                       ║',

@@ -1,4 +1,0 @@
-#!/usr/bin/env node
-// mgr - اختصار لـ muayadgen review
-process.argv.splice(2, 0, 'review');
-require('./muayadgen.js');

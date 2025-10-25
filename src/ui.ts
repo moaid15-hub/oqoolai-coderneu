@@ -48,13 +48,13 @@ export class UI {
       this.colors.gold.bold('أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد') + '\n\n' +
       this.colors.dim('النسخة: ') + this.colors.primary.bold('3.13.0') + '\n' +
       this.colors.dim('المطور: ') + this.colors.gold('Dr. Muayad') + '\n' +
-      this.colors.dim('npm: ') + this.colors.info('https://npmjs.com/package/@oqool/muayadgen'),
+      this.colors.dim('npm: ') + this.colors.info('https://npmjs.com/package/@oqool/oqool'),
       {
         padding: 1,
         margin: 1,
         borderStyle: 'round',
         borderColor: '#fbbf24',
-        title: '🧠 MuayadGen',
+        title: '🧠 oqool',
         titleAlignment: 'center',
       }
     );

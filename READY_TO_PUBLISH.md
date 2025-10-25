@@ -1,4 +1,4 @@
-# ✅ جاهز للنشر - MuayadGen 3.13.0
+# ✅ جاهز للنشر - oqool 3.13.0
 
 **التاريخ:** 2025-10-24
 **الحالة:** 🚀 **جاهز 100%**
@@ -8,7 +8,7 @@
 ## 📦 معلومات الحزمة
 
 ```
-الاسم:          @oqool/muayadgen
+الاسم:          @oqool/oqool
 الإصدار:       3.13.0
 الوصف:          أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد
 المؤلف:        Dr. Muayad
@@ -45,7 +45,7 @@ npm publish --access public
 ### 3️⃣ التحقق
 
 ```bash
-npm view @oqool/muayadgen
+npm view @oqool/oqool
 ```
 
 ---
@@ -56,7 +56,7 @@ npm view @oqool/muayadgen
 - [x] ✅ src/cli.ts محدّث
 - [x] ✅ README.md محدّث
 - [x] ✅ CHANGELOG.md محدّث
-- [x] ✅ bin/muayadgen.js موجود
+- [x] ✅ bin/oqool.js موجود
 - [x] ✅ .npmignore صحيح
 - [x] ✅ المشروع مبني (npm run build)
 - [x] ✅ الاختبارات نجحت
@@ -70,7 +70,7 @@ npm view @oqool/muayadgen
 
 **المضمّن:**
 - ✅ `dist/` - 31 ملف JavaScript مترجم
-- ✅ `bin/muayadgen.js` - نقطة الدخول
+- ✅ `bin/oqool.js` - نقطة الدخول
 - ✅ `README.md` - الدليل الرئيسي
 - ✅ `LICENSE` - ترخيص MIT
 - ✅ `package.json` - الإعدادات
@@ -89,20 +89,20 @@ npm view @oqool/muayadgen
 
 ```bash
 # التثبيت العالمي
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
 # الاختبار
-muayadgen --version    # 3.13.0
+oqool --version    # 3.13.0
 mg --version           # 3.13.0
 
 # المساعدة
-muayadgen --help
+oqool --help
 mg --help
 
 # الميزات الجديدة
-muayadgen complete "دالة لحساب المجموع"
-muayadgen db-schema "نظام مدونة" --orm prisma
-muayadgen api-test-create "User Tests"
+oqool complete "دالة لحساب المجموع"
+oqool db-schema "نظام مدونة" --orm prisma
+oqool api-test-create "User Tests"
 ```
 
 ---
@@ -157,7 +157,7 @@ git push origin v3.13.0
 
 ```bash
 gh release create v3.13.0 \
-  --title "MuayadGen v3.13.0 - الإصدار الرسمي الأول" \
+  --title "oqool v3.13.0 - الإصدار الرسمي الأول" \
   --notes-file CHANGELOG.md
 ```
 
@@ -165,7 +165,7 @@ gh release create v3.13.0 \
 
 **Twitter/X:**
 ```
-🚀 تم إطلاق MuayadGen 3.13.0!
+🚀 تم إطلاق oqool 3.13.0!
 
 أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد
 ✨ AI Code Completion
@@ -173,9 +173,9 @@ gh release create v3.13.0 \
 ✨ API Testing
 ✨ 100+ أمر CLI
 
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
-#MuayadGen #AI #CodeGen #npm
+#oqool #AI #CodeGen #npm
 ```
 
 ---
@@ -249,9 +249,9 @@ npm login
 بعد `npm publish`:
 
 1. ✅ انتظر دقيقة للمعالجة
-2. ✅ تحقق من: https://www.npmjs.com/package/@oqool/muayadgen
-3. ✅ جرّب: `npm install -g @oqool/muayadgen`
-4. ✅ استخدم: `muayadgen --version`
+2. ✅ تحقق من: https://www.npmjs.com/package/@oqool/oqool
+3. ✅ جرّب: `npm install -g @oqool/oqool`
+4. ✅ استخدم: `oqool --version`
 5. ✅ شارك الإنجاز! 🎉
 
 ---

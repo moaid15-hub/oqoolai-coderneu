@@ -1,4 +1,4 @@
-# 📦 دليل النشر على npm - MuayadGen
+# 📦 دليل النشر على npm - oqool
 
 **الإصدار:** 3.13.0
 **التاريخ:** 2025-10-24
@@ -92,13 +92,13 @@ npm pack
 
 **سيُنشئ ملف:**
 ```
-oqool-muayadgen-3.13.0.tgz
+oqool-oqool-3.13.0.tgz
 ```
 
 **اختبار التثبيت:**
 ```bash
-npm install -g ./oqool-muayadgen-3.13.0.tgz
-muayadgen --version
+npm install -g ./oqool-oqool-3.13.0.tgz
+oqool --version
 ```
 
 ---
@@ -112,7 +112,7 @@ npm publish --access public
 ```
 
 **لماذا `--access public`؟**
-- الحزم التي تبدأ بـ `@` (مثل `@oqool/muayadgen`) تكون خاصة افتراضياً
+- الحزم التي تبدأ بـ `@` (مثل `@oqool/oqool`) تكون خاصة افتراضياً
 - `--access public` يجعلها عامة ومجانية
 
 #### ب. معاينة ما سيتم نشره
@@ -126,7 +126,7 @@ npm publish --dry-run
 ### 7. التحقق من النشر
 
 **على الموقع:**
-1. اذهب إلى: https://www.npmjs.com/package/@oqool/muayadgen
+1. اذهب إلى: https://www.npmjs.com/package/@oqool/oqool
 2. تحقق من:
    - ✅ الإصدار: 3.13.0
    - ✅ الوصف صحيح
@@ -134,7 +134,7 @@ npm publish --dry-run
 
 **من الطرفية:**
 ```bash
-npm view @oqool/muayadgen
+npm view @oqool/oqool
 ```
 
 ---
@@ -145,11 +145,11 @@ npm view @oqool/muayadgen
 ```bash
 # في مجلد آخر
 cd /tmp
-npm install -g @oqool/muayadgen
-muayadgen --version
+npm install -g @oqool/oqool
+oqool --version
 # يجب أن يظهر: 3.13.0
 
-muayadgen --help
+oqool --help
 # يجب أن يظهر قائمة الأوامر
 
 # اختبار الاختصار
@@ -171,7 +171,7 @@ npm login
 ### المشكلة 2: "Package name already exists"
 
 **الحل:**
-- الحزمة `@oqool/muayadgen` موجودة بالفعل
+- الحزمة `@oqool/oqool` موجودة بالفعل
 - إما:
   1. استخدم `npm version patch/minor/major` لزيادة الإصدار
   2. أو غيّر الاسم في `package.json`
@@ -181,10 +181,10 @@ npm login
 **الحل:**
 ```bash
 # تأكد أنك المالك
-npm owner ls @oqool/muayadgen
+npm owner ls @oqool/oqool
 
 # إضافة نفسك كمالك (إذا لزم)
-npm owner add oqool @oqool/muayadgen
+npm owner add oqool @oqool/oqool
 ```
 
 ### المشكلة 4: "403 Forbidden"
@@ -217,21 +217,21 @@ git push origin v3.13.0
 
 ```bash
 gh release create v3.13.0 \
-  --title "MuayadGen v3.13.0" \
-  --notes "أول إصدار رسمي باسم MuayadGen"
+  --title "oqool v3.13.0" \
+  --notes "أول إصدار رسمي باسم oqool"
 ```
 
 ### 3. مشاركة الإصدار
 
 ```bash
 # Twitter
-npm install -g @oqool/muayadgen 🚀
+npm install -g @oqool/oqool 🚀
 أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد
-#MuayadGen #AI #CodeGen
+#oqool #AI #CodeGen
 
 # Discord/Slack
-تم نشر MuayadGen 3.13.0! 🎉
-npm install -g @oqool/muayadgen
+تم نشر oqool 3.13.0! 🎉
+npm install -g @oqool/oqool
 ```
 
 ---
@@ -260,7 +260,7 @@ npm publish --access public
 ### الحزمة:
 ```json
 {
-  "name": "@oqool/muayadgen",
+  "name": "@oqool/oqool",
   "version": "3.13.0",
   "description": "أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد",
   "author": "Dr. Muayad",
@@ -270,7 +270,7 @@ npm publish --access public
 
 ### الأوامر:
 ```bash
-muayadgen     # الأمر الكامل
+oqool     # الأمر الكامل
 mg            # الاختصار
 ```
 
@@ -315,13 +315,13 @@ npm pack --dry-run
 npm publish --access public
 
 # 5. التحقق
-npm view @oqool/muayadgen
+npm view @oqool/oqool
 
 # 6. التثبيت العالمي
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
 # 7. الاختبار
-muayadgen --version
+oqool --version
 mg --help
 ```
 

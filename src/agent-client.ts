@@ -70,7 +70,7 @@ export class AgentClient {
   // 🎯 الطريقة الرئيسية - تشغيل Agent
   // ============================================
   async run(userMessage: string): Promise<string> {
-    console.log(chalk.cyan('\n🧠 MuayadGen يعمل الآن...'));
+    console.log(chalk.cyan('\n🧠 oqool يعمل الآن...'));
     console.log(chalk.gray('━'.repeat(40)));
 
     // 1. تحليل context المشروع
@@ -150,7 +150,7 @@ export class AgentClient {
     }
 
     console.log(chalk.gray('\n' + '━'.repeat(40)));
-    console.log(chalk.green('✅ انتهى MuayadGen من العمل!\n'));
+    console.log(chalk.green('✅ انتهى oqool من العمل!\n'));
 
     // عرض ملخص الخطة إذا كان هناك واحدة
     if (this.planner) {
@@ -179,7 +179,7 @@ export class AgentClient {
   // 📝 System Prompt
   // ============================================
   private getSystemPrompt(projectContext: string = ''): string {
-    let prompt = `أنت MuayadGen - مساعد برمجة ذكي من تطوير Dr. Muayad.
+    let prompt = `أنت oqool - مساعد برمجة ذكي من تطوير Dr. Muayad.
 
 🎯 مهمتك:
 - قراءة وفهم المشاريع البرمجية

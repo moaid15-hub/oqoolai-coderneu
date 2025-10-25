@@ -1,15 +1,15 @@
 {
-  "name": "@oqool/muayadgen",
+  "name": "@oqool/oqool",
   "version": "5.0.0",
   "description": "AI Coding Agent - منافس Cursor و Windsurf - Context Management + Intelligent Planning + Testing + Git Integration",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "muayadgen": "./bin/muayadgen.js",
-    "mg": "./bin/mg",
-    "mgr": "./bin/mgr",
-    "mgt": "./bin/mgt",
-    "mgg": "./bin/mgg"
+    "oqool": "./bin/oqool.js",
+    "og": "./bin/og",
+    "ogr": "./bin/ogr",
+    "ogt": "./bin/ogt",
+    "ogg": "./bin/ogg"
   },
   "scripts": {
     "build": "tsc",
@@ -18,12 +18,12 @@
   },
   "keywords": [
     "oqool",
-    "muayadgen",
     "ai",
     "code-generator",
-    "cli"
+    "cli",
+    "arabic"
   ],
-  "author": "Dr. Muayad",
+  "author": "Oqool Team",
   "license": "MIT",
   "files": [
     "dist",

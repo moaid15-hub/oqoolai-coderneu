@@ -1,4 +1,4 @@
-# 🧠 MuayadGen
+# 🧠 oqool
 
 <div dir="rtl">
 
@@ -93,21 +93,21 @@
 ### عالمياً (Global)
 
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ### محلياً (في المشروع)
 
 ```bash
-npm install @oqool/muayadgen
-npx muayadgen
+npm install @oqool/oqool
+npx oqool
 ```
 
 ### من المصدر
 
 ```bash
-git clone https://github.com/oqool-ai/muayadgen.git
-cd muayadgen
+git clone https://github.com/oqool-ai/oqool.git
+cd oqool
 npm install
 npm run build
 npm link
@@ -126,13 +126,13 @@ npm link
 ### 2. تسجيل الدخول
 
 ```bash
-muayadgen login oqool_your_api_key_here
+oqool login oqool_your_api_key_here
 ```
 
 ### 3. استخدم الأداة!
 
 ```bash
-muayadgen "اصنع API بسيط ب Express.js"
+oqool "اصنع API بسيط ب Express.js"
 ```
 
 ---
@@ -143,184 +143,184 @@ muayadgen "اصنع API بسيط ب Express.js"
 
 #### 🔐 تسجيل الدخول
 ```bash
-muayadgen login <API_KEY>
+oqool login <API_KEY>
 ```
 
 #### 📝 توليد كود
 ```bash
-muayadgen "اصنع مكون React للمستخدمين"
-muayadgen generate "أضف middleware للمصادقة"
-muayadgen gen "اكتب اختبارات للـ API"
+oqool "اصنع مكون React للمستخدمين"
+oqool generate "أضف middleware للمصادقة"
+oqool gen "اكتب اختبارات للـ API"
 ```
 
 #### 💬 محادثة تفاعلية
 ```bash
-muayadgen chat
+oqool chat
 ```
 
 #### 📊 حالة الحساب
 ```bash
-muayadgen status
+oqool status
 ```
 
 #### 🌳 عرض بنية المشروع
 ```bash
-muayadgen structure
-muayadgen tree
+oqool structure
+oqool tree
 ```
 
 #### 🔧 تعديل الكود بدقة (Patch System)
 ```bash
-muayadgen patch "استبدل var بـ const" --files src/app.js
-muayadgen patch "حسن أداء الدالة fetchUsers" --files src/api.js --preview
+oqool patch "استبدل var بـ const" --files src/app.js
+oqool patch "حسن أداء الدالة fetchUsers" --files src/api.js --preview
 ```
 
 #### 🔍 تحليل الكود (AST Analyzer)
 ```bash
-muayadgen analyze src/app.js
-muayadgen analyze src/**/*.js --output json
+oqool analyze src/app.js
+oqool analyze src/**/*.js --output json
 ```
 
 #### 🏃 تشغيل الكود (Code Executor)
 ```bash
-muayadgen run src/app.js
-muayadgen run src/app.js --sandbox --timeout 10000
-muayadgen run-fix src/app.js  # تشغيل وإصلاح تلقائي
-muayadgen fix src/app.js --auto-apply  # إصلاح الأخطاء
+oqool run src/app.js
+oqool run src/app.js --sandbox --timeout 10000
+oqool run-fix src/app.js  # تشغيل وإصلاح تلقائي
+oqool fix src/app.js --auto-apply  # إصلاح الأخطاء
 ```
 
 #### 🚪 تسجيل الخروج
 ```bash
-muayadgen logout
+oqool logout
 ```
 
 #### 📚 إدارة التوثيق
 ```bash
-muayadgen docs search "express api"
-muayadgen docs stats
-muayadgen docs export --format json
+oqool docs search "express api"
+oqool docs stats
+oqool docs export --format json
 ```
 
 #### 👥 جلسات التعاون
 ```bash
-muayadgen session create "مشروع API" "تطوير API للمنصة"
-muayadgen session invite user@example.com --role member
-muayadgen session list
+oqool session create "مشروع API" "تطوير API للمنصة"
+oqool session invite user@example.com --role member
+oqool session list
 ```
 
 #### 🔍 مراجعات الكود
 ```bash
-muayadgen review create "تحسين الأداء" "مراجعة endpoints" --files src/api.ts --reviewer senior
-muayadgen review list --status pending
+oqool review create "تحسين الأداء" "مراجعة endpoints" --files src/api.ts --reviewer senior
+oqool review list --status pending
 ```
 
 #### 🔐 الأمان المتقدم
 ```bash
-muayadgen security scan src/api.ts
-muayadgen security deps
-muayadgen security sign src/app.js
-muayadgen security encrypt config/database.js
-muayadgen security report
+oqool security scan src/api.ts
+oqool security deps
+oqool security sign src/app.js
+oqool security encrypt config/database.js
+oqool security report
 ```
 
 #### 📋 قوالب الفريق
 ```bash
-muayadgen team-template create "Express API" "قالب API معقد" backend --files src/**/*.ts
-muayadgen team-template search "api"
+oqool team-template create "Express API" "قالب API معقد" backend --files src/**/*.ts
+oqool team-template search "api"
 ```
 
 #### 🎭 فرق AI متعددة الشخصيات
 ```bash
-muayadgen team create "فريق التطوير" "فريق لتطوير تطبيق ويب" web-application
-muayadgen team list
-muayadgen team personalities
-muayadgen team discuss <team-id> "تحسين الأداء" "كيف نحسن أداء قاعدة البيانات؟"
+oqool team create "فريق التطوير" "فريق لتطوير تطبيق ويب" web-application
+oqool team list
+oqool team personalities
+oqool team discuss <team-id> "تحسين الأداء" "كيف نحسن أداء قاعدة البيانات؟"
 ```
 
 #### 🧠 الذكاء الجماعي
 ```bash
-muayadgen collective create "اختيار قاعدة البيانات" "ما هي أفضل قاعدة بيانات للمشروع؟"
-muayadgen collective decide <decision-id>
-muayadgen collective list
-muayadgen collective cluster "قاعدة البيانات" "تحليل قواعد البيانات"
-muayadgen collective knowledge <cluster-id> "MongoDB سريع في القراءة" "خبرة عملية"
+oqool collective create "اختيار قاعدة البيانات" "ما هي أفضل قاعدة بيانات للمشروع؟"
+oqool collective decide <decision-id>
+oqool collective list
+oqool collective cluster "قاعدة البيانات" "تحليل قواعد البيانات"
+oqool collective knowledge <cluster-id> "MongoDB سريع في القراءة" "خبرة عملية"
 ```
 
 #### 🧬 DNA الكود
 ```bash
-muayadgen dna extract src/app.js
-muayadgen dna compare src/app.js src/utils.js
-muayadgen dna list
+oqool dna extract src/app.js
+oqool dna compare src/app.js src/utils.js
+oqool dna list
 ```
 
 #### 🎤 النظام الصوتي
 ```bash
-muayadgen voice config --enable
-muayadgen voice start
-muayadgen voice train
-muayadgen voice sessions
-muayadgen voice stats
+oqool voice config --enable
+oqool voice start
+oqool voice train
+oqool voice sessions
+oqool voice stats
 ```
 
 #### 🎭 فرق AI المتقدمة (v2.5)
 ```bash
 # إنشاء فريق AI متخصص
-muayadgen team create "فريق التطوير" "تطوير تطبيق ويب" web-application
+oqool team create "فريق التطوير" "تطوير تطبيق ويب" web-application
 
 # عرض الشخصيات المتاحة
-muayadgen team personalities
+oqool team personalities
 
 # مناقشة جماعية
-muayadgen team discuss <team-id> "تحسين الأداء" "كيف نحسن أداء قاعدة البيانات؟"
+oqool team discuss <team-id> "تحسين الأداء" "كيف نحسن أداء قاعدة البيانات؟"
 
 # عصف ذهني جماعي
-muayadgen ai-team brainstorm "تصميم النظام" "ما هي أفضل بنية للتطبيق؟"
+oqool ai-team brainstorm "تصميم النظام" "ما هي أفضل بنية للتطبيق؟"
 
 # قرار جماعي
-muayadgen collective create "اختيار قاعدة البيانات" "ما هي أفضل قاعدة بيانات؟"
-muayadgen collective decide <decision-id>
+oqool collective create "اختيار قاعدة البيانات" "ما هي أفضل قاعدة بيانات؟"
+oqool collective decide <decision-id>
 ```
 
 #### 🧬 DNA الكود (v2.5)
 ```bash
 # استخراج DNA لملف
-muayadgen dna extract src/app.js
+oqool dna extract src/app.js
 
 # مقارنة DNA ملفين
-muayadgen dna compare src/app.js src/utils.js
+oqool dna compare src/app.js src/utils.js
 
 # عرض DNA المحفوظة
-muayadgen dna list
+oqool dna list
 ```
 
 #### 🎤 النظام الصوتي (v2.5)
 ```bash
 # تكوين النظام الصوتي
-muayadgen voice config --enable --language ar
+oqool voice config --enable --language ar
 
 # بدء جلسة صوتية
-muayadgen voice start
+oqool voice start
 
 # تدريب النظام
-muayadgen voice train
+oqool voice train
 
 # عرض الجلسات
-muayadgen voice sessions
+oqool voice sessions
 
 # إحصائيات الصوت
-muayadgen voice stats
+oqool voice stats
 ```
 
 #### 🤖 الذكاء الاصطناعي المتقدم
 ```bash
 # عرض الشخصيات المتاحة
-muayadgen ai-team personality
+oqool ai-team personality
 
 # عصف ذهني جماعي
-muayadgen ai-team brainstorm "تحسين تجربة المستخدم"
+oqool ai-team brainstorm "تحسين تجربة المستخدم"
 
 # مناقشة بين الشخصيات
-muayadgen ai-team debate <team-id> "أفضل إطار عمل للمشروع"
+oqool ai-team debate <team-id> "أفضل إطار عمل للمشروع"
 ```
 
 ---
@@ -330,21 +330,21 @@ muayadgen ai-team debate <team-id> "أفضل إطار عمل للمشروع"
 ### تحديد ملفات معينة للسياق
 
 ```bash
-muayadgen "عدل هذا الملف" --files src/api.ts src/types.ts
+oqool "عدل هذا الملف" --files src/api.ts src/types.ts
 ```
 
 ### تحديد عدد الملفات
 
 ```bash
-muayadgen "اصنع API" --max-files 5
+oqool "اصنع API" --max-files 5
 ```
 
 ### اختيار مزود AI محدد
 
 ```bash
-muayadgen "اكتب دالة معقدة" --provider claude
-muayadgen "برمجة بسيطة" --provider deepseek
-muayadgen "سؤال عام" --provider openai
+oqool "اكتب دالة معقدة" --provider claude
+oqool "برمجة بسيطة" --provider deepseek
+oqool "سؤال عام" --provider openai
 ```
 
 ---
@@ -378,7 +378,7 @@ out/
 
 ```bash
 cd my-project
-muayadgen "اصنع Express API مع endpoints للمستخدمين (create, read, update, delete)"
+oqool "اصنع Express API مع endpoints للمستخدمين (create, read, update, delete)"
 ```
 
 **النتيجة:**
@@ -390,19 +390,19 @@ muayadgen "اصنع Express API مع endpoints للمستخدمين (create, rea
 ### مثال 2: إضافة ميزة لمشروع موجود
 
 ```bash
-muayadgen "أضف نظام مصادقة JWT مع middleware" --files src/server.ts
+oqool "أضف نظام مصادقة JWT مع middleware" --files src/server.ts
 ```
 
 ### مثال 3: كتابة اختبارات
 
 ```bash
-muayadgen "اكتب اختبارات Jest لملف API" --files src/api.ts
+oqool "اكتب اختبارات Jest لملف API" --files src/api.ts
 ```
 
 ### مثال 4: محادثة تفاعلية
 
 ```bash
-muayadgen chat
+oqool chat
 
 أنت: اشرح لي الكود في src/utils.ts
 🤖 Oqool: [شرح الكود]
@@ -426,10 +426,10 @@ muayadgen chat
 
 ```bash
 # قبل الطلب، دع الأداة تفحص المشروع
-muayadgen structure
+oqool structure
 
 # ثم اطلب بوضوح
-muayadgen "أضف endpoint جديد للإحصائيات"
+oqool "أضف endpoint جديد للإحصائيات"
 ```
 
 ### 3. راجع الكود قبل الكتابة
@@ -584,19 +584,19 @@ MIT License - راجع ملف [LICENSE](LICENSE)
 
 ```bash
 # فرق AI متعددة الشخصيات
-muayadgen team create/list/personalities/discuss
+oqool team create/list/personalities/discuss
 
 # الذكاء الجماعي
-muayadgen collective create/decide/list/cluster/knowledge
+oqool collective create/decide/list/cluster/knowledge
 
 # DNA الكود
-muayadgen dna extract/compare/list
+oqool dna extract/compare/list
 
 # النظام الصوتي
-muayadgen voice config/start/train/sessions/stats
+oqool voice config/start/train/sessions/stats
 
 # الذكاء المتقدم
-muayadgen ai-team personality/brainstorm/debate
+oqool ai-team personality/brainstorm/debate
 ```
 
 ### 🔬 التقنيات المتقدمة:

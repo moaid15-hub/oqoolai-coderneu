@@ -1,4 +1,4 @@
-# 🚀 تقرير الترقية - MuayadGen v4.1 Enhanced Agent
+# 🚀 تقرير الترقية - oqool v4.1 Enhanced Agent
 
 **التاريخ:** 2025-10-25
 **النسخة:** من 4.0.0 إلى 4.1.0
@@ -111,7 +111,7 @@ await saveConfig({
 
 ### 4. إزالة الملفات القديمة المتضاربة:
 ```bash
-rm src/agent-claude-client-old.ts
+rm src/agent-oqool-client-old.ts
 ```
 
 ---
@@ -125,7 +125,7 @@ node test-new-agent.js
 
 **النتيجة:** ✅ نجح
 - قرأ `package.json` فعلياً
-- استخرج اسم المشروع: `@oqool/muayadgen`
+- استخرج اسم المشروع: `@oqool/oqool`
 - عدد التكرارات: 2
 - عدد الرسائل: 4
 
@@ -218,10 +218,10 @@ import { createAgentClient } from './dist/agent-client.js';
 
 ### 2. إنشاء أوامر CLI جديدة:
 ```bash
-muayadgen "اقرأ ملف X"        # يعمل
-muayadgen -d /path "..."       # مع مجلد محدد
-muayadgen login sk-ant-...     # تسجيل دخول
-muayadgen status               # عرض الحالة
+oqool "اقرأ ملف X"        # يعمل
+oqool -d /path "..."       # مع مجلد محدد
+oqool login sk-ant-...     # تسجيل دخول
+oqool status               # عرض الحالة
 ```
 
 ### 3. توسيع الأدوات:

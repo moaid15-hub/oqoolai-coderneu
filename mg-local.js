@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // mg-local.js
 // ============================================
-// 🚀 MuayadGen المحلي المبسط
+// 🚀 oqool المحلي المبسط
 // ============================================
 
 import dotenv from 'dotenv';
@@ -78,7 +78,7 @@ import('./dist/agent-client.js').then(async (claudeModule) => {
   // عرض Banner جميل
   console.log('\x1b[36m╔══════════════════════════════════════════════════════════╗\x1b[0m');
   console.log('\x1b[36m║\x1b[0m                                                          \x1b[36m║\x1b[0m');
-  console.log('\x1b[36m║\x1b[0m     \x1b[1m\x1b[35m🧠  MuayadGen - مولّد الأكواد الذكي  🚀\x1b[0m        \x1b[36m║\x1b[0m');
+  console.log('\x1b[36m║\x1b[0m     \x1b[1m\x1b[35m🧠  oqool - مولّد الأكواد الذكي  🚀\x1b[0m        \x1b[36m║\x1b[0m');
   console.log('\x1b[36m║\x1b[0m                                                          \x1b[36m║\x1b[0m');
   console.log('\x1b[36m║\x1b[0m     \x1b[33mأداة ذكية لكتابة الأكواد بواسطة Dr. Muayad\x1b[0m     \x1b[36m║\x1b[0m');
   console.log('\x1b[36m║\x1b[0m                                                          \x1b[36m║\x1b[0m');

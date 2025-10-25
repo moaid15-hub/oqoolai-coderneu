@@ -1,10 +1,10 @@
-# 🧠 MuayadGen v4.0 - Coding Agent الكامل
+# 🧠 oqool v4.0 - Coding Agent الكامل
 
 <div dir="rtl">
 
 ## 🎉 التحديث الضخم - من مولد كود إلى Coding Agent!
 
-**MuayadGen** - الآن **Coding Agent متكامل** مثل Claude Code تماماً!
+**oqool** - الآن **Coding Agent متكامل** مثل Oqool تماماً!
 
 **المطور:** Dr. Muayad
 **النسخة:** 4.0.0 (Agent Edition)
@@ -24,7 +24,7 @@
 - **تافه ومحدود!**
 
 ### 🟢 النسخة الجديدة (4.0):
-- **Coding Agent كامل** مثل Claude Code! 🚀
+- **Coding Agent كامل** مثل Oqool! 🚀
 - ✅ يقرأ الملفات
 - ✅ يكتب ملفات جديدة
 - ✅ يعدل ملفات موجودة
@@ -76,7 +76,7 @@ muayad "أصلح مشكلة CORS في API"
 
 ## 🛠️ الأدوات المتوفرة
 
-MuayadGen يستخدم **6 أدوات قوية**:
+oqool يستخدم **6 أدوات قوية**:
 
 | الأداة | الوصف | مثال |
 |-------|-------|------|
@@ -95,7 +95,7 @@ MuayadGen يستخدم **6 أدوات قوية**:
 
 ```
 1. تستقبل الطلب من المستخدم
-2. MuayadGen يحلل الطلب
+2. oqool يحلل الطلب
 3. يقرر الأدوات المطلوبة
 4. ينفذها واحدة تلو الأخرى
 5. يحلل النتائج
@@ -178,7 +178,7 @@ muayad "شغّل npm test وإذا فشل أي اختبار، أصلحه"
 
 ## 📊 المقارنة مع الأدوات الأخرى
 
-| الميزة | MuayadGen 4.0 | GitHub Copilot | ChatGPT |
+| الميزة | oqool 4.0 | GitHub Copilot | ChatGPT |
 |--------|--------------|----------------|---------|
 | توليد كود | ✅ | ✅ | ✅ |
 | قراءة الملفات | ✅ | ❌ | ❌ |
@@ -220,7 +220,7 @@ muayad
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║
-║     🧠  MuayadGen - مولّد الأكواد الذكي  🚀        ║
+║     🧠  oqool - مولّد الأكواد الذكي  🚀        ║
 ║                                                          ║
 ║     أداة ذكية لكتابة الأكواد بواسطة Dr. Muayad     ║
 ║                                                          ║
@@ -232,7 +232,7 @@ muayad
 
 ### عرض العمل الحي:
 ```
-🧠 MuayadGen يعمل الآن...
+🧠 oqool يعمل الآن...
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Iteration 1]
@@ -244,7 +244,7 @@ muayad
 [Iteration 2]
 ...
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ انتهى MuayadGen من العمل!
+✅ انتهى oqool من العمل!
 ```
 
 ---
@@ -257,8 +257,8 @@ muayad
 oqool-code/
 ├── src/
 │   ├── tools.ts                  🆕 الأدوات الستة
-│   ├── agent-claude-client.ts    🆕 Agent Engine
-│   ├── local-claude-client.ts    القديم (للمرجع)
+│   ├── agent-oqool-client.ts    🆕 Agent Engine
+│   ├── local-oqool-client.ts    القديم (للمرجع)
 │   └── api-client.ts
 ├── dist/                         مخرجات البناء
 ├── mg-local.js                   🔄 محدّث للـ Agent
@@ -336,7 +336,7 @@ npm run build
 
 ### 🚀 النتيجة النهائية:
 
-**MuayadGen** الآن ليس مجرد مولد كود - هو **Coding Agent متكامل** مثل Claude Code تماماً!
+**oqool** الآن ليس مجرد مولد كود - هو **Coding Agent متكامل** مثل Oqool تماماً!
 
 - يفهم المشاريع
 - يقرأ الملفات
@@ -355,7 +355,7 @@ muayad "ابدأ معي الآن!"
 
 **صُنع بـ ❤️ بواسطة Dr. Muayad**
 
-**MuayadGen v4.0 - Agent Edition 🧠**
+**oqool v4.0 - Agent Edition 🧠**
 
 ---
 

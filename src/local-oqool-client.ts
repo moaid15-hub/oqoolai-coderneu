@@ -1,4 +1,4 @@
-// local-claude-client.ts
+// local-oqool-client.ts
 // ============================================
 // 🤖 عميل Claude المحلي - يستخدم API مباشرة
 // ============================================
@@ -71,7 +71,7 @@ export class LocalClaudeClient {
       const messages: Message[] = [
         {
           role: 'system',
-          content: `أنت MuayadGen - مساعد برمجة ذكي ومحاور من تطوير Dr. Muayad.
+          content: `أنت oqool - مساعد برمجة ذكي ومحاور من تطوير Dr. Muayad.
 
 ${contextMessage}
 

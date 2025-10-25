@@ -1,4 +1,4 @@
-# 💰 MuayadGen Pricing Model - نموذج التسعير
+# 💰 oqool Pricing Model - نموذج التسعير
 
 ## 🎯 الواقع: خدمة مدفوعة من البداية
 
@@ -54,7 +54,7 @@
 **المقارنة:**
 - Cursor: $20/month
 - Windsurf: $15/month
-- **MuayadGen: $15/month** ✅ **+ أقوى ميزات**
+- **oqool: $15/month** ✅ **+ أقوى ميزات**
 
 ---
 
@@ -150,9 +150,9 @@
 | **Cursor** | $20 | AI coding, limited features |
 | **Windsurf** | $15 | AI coding, basic features |
 | **GitHub Copilot** | $10 | Code completion only |
-| **MuayadGen** | **$15** | **15 ميزة + دعم عربي** ✅ |
+| **oqool** | **$15** | **15 ميزة + دعم عربي** ✅ |
 
-**النتيجة:** MuayadGen = **أفضل قيمة مقابل السعر**
+**النتيجة:** oqool = **أفضل قيمة مقابل السعر**
 
 ---
 
@@ -163,9 +163,9 @@
 | **Cursor Team** | $20 | Basic team features |
 | **Windsurf Team** | $18 | Limited team features |
 | **GitHub Copilot Business** | $19 | Code completion + admin |
-| **MuayadGen Team** | **$12** | **Full team features** ✅ |
+| **oqool Team** | **$12** | **Full team features** ✅ |
 
-**النتيجة:** MuayadGen = **أرخص 40%**
+**النتيجة:** oqool = **أرخص 40%**
 
 ---
 
@@ -340,7 +340,7 @@
 
 ---
 
-**🎯 MuayadGen = Premium Product بسعر معقول! 💎**
+**🎯 oqool = Premium Product بسعر معقول! 💎**
 
 **السعر يعكس القيمة + يغطي التكاليف + يحقق ربح مستدام**
 
@@ -350,7 +350,7 @@
 
 1. ✅ إنهاء v5.0.0 (تم)
 2. ⏳ إعداد Payment System (Stripe)
-3. ⏳ بناء موقع التسويق (muayadgen.com)
+3. ⏳ بناء موقع التسويق (oqool.com)
 4. ⏳ إطلاق Beta (50% خصم)
 5. ⏳ Public Launch
 

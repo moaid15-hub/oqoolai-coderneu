@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-// نقطة دخول MuayadGen CLI
+// نقطة دخول Oqool CLI
 import '../dist/index.js';

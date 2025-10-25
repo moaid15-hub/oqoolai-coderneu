@@ -1,4 +1,4 @@
-# 🎉 نجاح النشر - MuayadGen 3.13.0
+# 🎉 نجاح النشر - oqool 3.13.0
 
 **التاريخ:** 2025-10-24
 **الوقت:** تم النشر بنجاح
@@ -9,7 +9,7 @@
 ## 📦 معلومات الحزمة المنشورة
 
 ```
-الاسم:          @oqool/muayadgen
+الاسم:          @oqool/oqool
 الإصدار:       3.13.0
 المالك:         oqool
 الحجم:          242 KB (مضغوط)
@@ -24,16 +24,16 @@ Registry:       https://registry.npmjs.org/
 ## 🔗 الروابط الرسمية
 
 ### npm Package:
-https://www.npmjs.com/package/@oqool/muayadgen
+https://www.npmjs.com/package/@oqool/oqool
 
 ### npm Stats:
-https://npm-stat.com/charts.html?package=@oqool/muayadgen
+https://npm-stat.com/charts.html?package=@oqool/oqool
 
 ### Unpkg CDN:
-https://unpkg.com/@oqool/muayadgen@3.13.0/
+https://unpkg.com/@oqool/oqool@3.13.0/
 
 ### jsDelivr CDN:
-https://cdn.jsdelivr.net/npm/@oqool/muayadgen@3.13.0/
+https://cdn.jsdelivr.net/npm/@oqool/oqool@3.13.0/
 
 ---
 
@@ -41,22 +41,22 @@ https://cdn.jsdelivr.net/npm/@oqool/muayadgen@3.13.0/
 
 ### عالمياً (Global):
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ### محلياً (Local):
 ```bash
-npm install @oqool/muayadgen
+npm install @oqool/oqool
 ```
 
 ### باستخدام yarn:
 ```bash
-yarn global add @oqool/muayadgen
+yarn global add @oqool/oqool
 ```
 
 ### باستخدام pnpm:
 ```bash
-pnpm add -g @oqool/muayadgen
+pnpm add -g @oqool/oqool
 ```
 
 ---
@@ -65,7 +65,7 @@ pnpm add -g @oqool/muayadgen
 
 ```bash
 # التحقق من الإصدار
-muayadgen --version
+oqool --version
 # 3.13.0
 
 # الاختصار
@@ -73,12 +73,12 @@ mg --version
 # 3.13.0
 
 # عرض المساعدة
-muayadgen --help
+oqool --help
 
 # الميزات الجديدة
-muayadgen complete "دالة لحساب المجموع"
-muayadgen db-schema "نظام مدونة" --orm prisma
-muayadgen api-test-create "User Tests"
+oqool complete "دالة لحساب المجموع"
+oqool db-schema "نظام مدونة" --orm prisma
+oqool api-test-create "User Tests"
 ```
 
 ---
@@ -92,7 +92,7 @@ muayadgen api-test-create "User Tests"
 - ✅ جميع المكتبات والتبعيات
 
 ### الملفات الرئيسية:
-- ✅ `bin/muayadgen.js` - نقطة الدخول
+- ✅ `bin/oqool.js` - نقطة الدخول
 - ✅ `dist/*` - الكود المترجم
 - ✅ `README.md` - الدليل الكامل
 - ✅ `LICENSE` - MIT
@@ -173,8 +173,8 @@ muayadgen api-test-create "User Tests"
 
 ```bash
 # في طرفية جديدة
-npm install -g @oqool/muayadgen
-muayadgen --version
+npm install -g @oqool/oqool
+oqool --version
 mg --help
 ```
 
@@ -189,9 +189,9 @@ git push origin v3.13.0
 
 ```bash
 gh release create v3.13.0 \
-  --title "MuayadGen v3.13.0 - الإصدار الرسمي الأول" \
+  --title "oqool v3.13.0 - الإصدار الرسمي الأول" \
   --notes "
-  🎉 الإصدار الرسمي الأول من MuayadGen!
+  🎉 الإصدار الرسمي الأول من oqool!
 
   ## ✨ الميزات الرئيسية
   - 🥇 AI Code Completion - إكمال كود ذكي
@@ -203,11 +203,11 @@ gh release create v3.13.0 \
 
   ## 📦 التثبيت
   \`\`\`bash
-  npm install -g @oqool/muayadgen
+  npm install -g @oqool/oqool
   \`\`\`
 
   ## 🔗 الروابط
-  - npm: https://www.npmjs.com/package/@oqool/muayadgen
+  - npm: https://www.npmjs.com/package/@oqool/oqool
   - الدليل: README.md
   "
 ```
@@ -216,7 +216,7 @@ gh release create v3.13.0 \
 
 #### Twitter/X:
 ```
-🚀 تم إطلاق MuayadGen 3.13.0!
+🚀 تم إطلاق oqool 3.13.0!
 
 أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد 🤖
 
@@ -226,15 +226,15 @@ gh release create v3.13.0 \
 ✨ 100+ أمر CLI
 ✨ دعم 7 لغات برمجة
 
-📦 npm install -g @oqool/muayadgen
+📦 npm install -g @oqool/oqool
 
-#MuayadGen #AI #CodeGen #npm #OpenSource
-🔗 https://www.npmjs.com/package/@oqool/muayadgen
+#oqool #AI #CodeGen #npm #OpenSource
+🔗 https://www.npmjs.com/package/@oqool/oqool
 ```
 
 #### LinkedIn:
 ```
-سعيد بالإعلان عن إطلاق MuayadGen 3.13.0 🎉
+سعيد بالإعلان عن إطلاق oqool 3.13.0 🎉
 
 أداة CLI متقدمة تعتمد على الذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
@@ -246,10 +246,10 @@ gh release create v3.13.0 \
 • دعم 7 لغات برمجة
 
 التثبيت:
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
 الحزمة متاحة الآن على npm:
-https://www.npmjs.com/package/@oqool/muayadgen
+https://www.npmjs.com/package/@oqool/oqool
 
 #AI #Development #OpenSource #npm
 ```
@@ -258,7 +258,7 @@ https://www.npmjs.com/package/@oqool/muayadgen
 ```
 @everyone 🎉
 
-تم نشر **MuayadGen v3.13.0** على npm! 🚀
+تم نشر **oqool v3.13.0** على npm! 🚀
 
 **الميزات:**
 ✅ AI Code Completion
@@ -269,16 +269,16 @@ https://www.npmjs.com/package/@oqool/muayadgen
 
 **التثبيت:**
 \`\`\`bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 \`\`\`
 
 **الاستخدام:**
 \`\`\`bash
-muayadgen --help
+oqool --help
 mg complete "function to calculate sum"
 \`\`\`
 
-🔗 https://www.npmjs.com/package/@oqool/muayadgen
+🔗 https://www.npmjs.com/package/@oqool/oqool
 ```
 
 ---
@@ -293,7 +293,7 @@ mg complete "function to calculate sum"
 - `docs/reports/` - 9 تقارير تطوير
 
 ### الروابط المفيدة:
-- npm Package: https://www.npmjs.com/package/@oqool/muayadgen
+- npm Package: https://www.npmjs.com/package/@oqool/oqool
 - GitHub: (أضف الرابط هنا)
 - الدعم: (أضف الرابط هنا)
 - الوثائق: (أضف الرابط هنا)
@@ -305,7 +305,7 @@ mg complete "function to calculate sum"
 ### ✅ ما تم إنجازه:
 
 1. ✅ **إعادة التسمية الكاملة**
-   - من `@oqool/code` إلى `@oqool/muayadgen`
+   - من `@oqool/code` إلى `@oqool/oqool`
    - الإصدار: 3.13.0
 
 2. ✅ **تنظيم المشروع**
@@ -352,7 +352,7 @@ SHA:            73b7a921a5f2b1edae5e0e8ecbf70cf1e0b7d359
 
 ---
 
-**🎉 مبروك! تم نشر MuayadGen بنجاح! 🎉**
+**🎉 مبروك! تم نشر oqool بنجاح! 🎉**
 
 **🌍 أداتك الآن متاحة للعالم! 🚀**
 
@@ -360,4 +360,4 @@ SHA:            73b7a921a5f2b1edae5e0e8ecbf70cf1e0b7d359
 
 **تاريخ النشر:** 2025-10-24
 **الحالة:** ✅ **نجح بنسبة 100%**
-**npm Package:** https://www.npmjs.com/package/@oqool/muayadgen
+**npm Package:** https://www.npmjs.com/package/@oqool/oqool

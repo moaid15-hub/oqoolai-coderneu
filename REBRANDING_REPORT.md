@@ -1,4 +1,4 @@
-# 🎉 تقرير إعادة التسمية الرسمية - MuayadGen 3.13.0
+# 🎉 تقرير إعادة التسمية الرسمية - oqool 3.13.0
 
 **التاريخ:** 2025-10-24
 **الإصدار:** 3.13.0
@@ -8,7 +8,7 @@
 
 ## 📋 ملخص التنفيذ
 
-تم بنجاح إعادة تسمية المشروع من `@oqool/code` إلى `@oqool/muayadgen` مع تنظيم شامل للمشروع.
+تم بنجاح إعادة تسمية المشروع من `@oqool/code` إلى `@oqool/oqool` مع تنظيم شامل للمشروع.
 
 ---
 
@@ -18,8 +18,8 @@
 
 | قبل | بعد |
 |-----|-----|
-| `@oqool/code` | `@oqool/muayadgen` |
-| `oqool-code` | `muayadgen` |
+| `@oqool/code` | `@oqool/oqool` |
+| `oqool-code` | `oqool` |
 | - | `mg` (اختصار جديد) |
 | 1.0.0 | 3.13.0 |
 
@@ -33,7 +33,7 @@ oqool <command>
 
 **أصبح:**
 ```bash
-muayadgen <command>
+oqool <command>
 mg <command>  # اختصار جديد
 ```
 
@@ -46,7 +46,7 @@ npm install -g @oqool/code
 
 **أصبح:**
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ---
@@ -66,9 +66,9 @@ oqool-code/
 
 ### البنية الجديدة:
 ```
-muayadgen/
+oqool/
 ├── bin/
-│   ├── muayadgen.js   ⭐ جديد
+│   ├── oqool.js   ⭐ جديد
 │   └── oqool-code.js  (legacy)
 │
 ├── src/               (31 ملف منظم)
@@ -99,12 +99,12 @@ muayadgen/
 **التغييرات:**
 ```json
 {
-  "name": "@oqool/muayadgen",      // ✅ محدّث
+  "name": "@oqool/oqool",      // ✅ محدّث
   "version": "3.13.0",              // ✅ محدّث
   "description": "أداة ذكاء اصطناعي متقدمة...",  // ✅ محدّث
   "bin": {
-    "muayadgen": "./bin/muayadgen.js",  // ✅ جديد
-    "mg": "./bin/muayadgen.js"          // ✅ جديد
+    "oqool": "./bin/oqool.js",  // ✅ جديد
+    "mg": "./bin/oqool.js"          // ✅ جديد
   },
   "scripts": {
     "build": "tsc",
@@ -125,29 +125,29 @@ muayadgen/
 **التغييرات:**
 ```typescript
 program
-  .name('muayadgen')                    // ✅ محدّث
-  .description('🧠 MuayadGen - ...')   // ✅ محدّث
+  .name('oqool')                    // ✅ محدّث
+  .description('🧠 oqool - ...')   // ✅ محدّث
   .version('3.13.0');                   // ✅ محدّث
 ```
 
-### 3. bin/muayadgen.js
+### 3. bin/oqool.js
 
 **ملف جديد:**
 ```javascript
 #!/usr/bin/env node
 
-// نقطة دخول MuayadGen CLI
+// نقطة دخول oqool CLI
 import '../dist/index.js';
 ```
 
 ### 4. README.md
 
 **التغييرات:**
-- ✅ العنوان: `# 🧠 MuayadGen`
+- ✅ العنوان: `# 🧠 oqool`
 - ✅ الوصف: "أداة ذكاء اصطناعي متقدمة..."
 - ✅ الإصدار: 3.13.0
-- ✅ جميع الأوامر: من `oqool-code` إلى `muayadgen`
-- ✅ التنصيب: من `@oqool/code` إلى `@oqool/muayadgen`
+- ✅ جميع الأوامر: من `oqool-code` إلى `oqool`
+- ✅ التنصيب: من `@oqool/code` إلى `@oqool/oqool`
 
 ### 5. CHANGELOG.md
 
@@ -221,13 +221,13 @@ npm run build
 
 ### 2. الإصدار:
 ```bash
-node bin/muayadgen.js --version
+node bin/oqool.js --version
 ```
 **النتيجة:** ✅ `3.13.0`
 
 ### 3. المساعدة:
 ```bash
-node bin/muayadgen.js --help
+node bin/oqool.js --help
 ```
 **النتيجة:** ✅ يعرض جميع الأوامر بشكل صحيح
 
@@ -276,21 +276,21 @@ npm link
 
 2. **اختبار الأوامر:**
 ```bash
-muayadgen --version
+oqool --version
 mg --version
-muayadgen --help
+oqool --help
 ```
 
 3. **استخدام الميزات الجديدة:**
 ```bash
 # AI Code Completion
-muayadgen complete "دالة لحساب المجموع"
+oqool complete "دالة لحساب المجموع"
 
 # Database Integration
-muayadgen db-schema "نظام مدونة" --orm prisma
+oqool db-schema "نظام مدونة" --orm prisma
 
 # API Testing
-muayadgen api-test-create "User Tests" -u https://api.example.com
+oqool api-test-create "User Tests" -u https://api.example.com
 ```
 
 ### للنشر على npm:
@@ -309,7 +309,7 @@ npm publish --access public
 
 3. **التثبيت العالمي:**
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ---
@@ -331,9 +331,9 @@ npm install -g @oqool/muayadgen
 
 ### ✅ ما تم إنجازه:
 
-1. ✅ **إعادة التسمية الكاملة** من `@oqool/code` إلى `@oqool/muayadgen`
+1. ✅ **إعادة التسمية الكاملة** من `@oqool/code` إلى `@oqool/oqool`
 2. ✅ **تحديث جميع الملفات** (package.json, cli.ts, README.md, CHANGELOG.md)
-3. ✅ **إنشاء أوامر جديدة** (`muayadgen`, `mg`)
+3. ✅ **إنشاء أوامر جديدة** (`oqool`, `mg`)
 4. ✅ **تنظيم المشروع** (docs/, tests/, STRUCTURE.md)
 5. ✅ **اختبار شامل** (build, version, help)
 6. ✅ **توثيق كامل** (README, CHANGELOG, STRUCTURE, REBRANDING)
@@ -341,7 +341,7 @@ npm install -g @oqool/muayadgen
 ### 📊 النتيجة النهائية:
 
 ```
-الاسم:      @oqool/muayadgen
+الاسم:      @oqool/oqool
 الإصدار:   3.13.0
 الحالة:    ✅ جاهز للنشر
 الاختبار:  ✅ كل الاختبارات نجحت
@@ -358,7 +358,7 @@ npm install -g @oqool/muayadgen
 - ✅ **موثق بشكل شامل**
 - ✅ **جاهز للاستخدام**
 - ✅ **جاهز للنشر على npm**
-- ✅ **يحمل الاسم الجديد MuayadGen**
+- ✅ **يحمل الاسم الجديد oqool**
 
 **المشروع جاهز 100%! 🚀**
 

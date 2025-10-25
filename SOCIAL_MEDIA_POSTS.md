@@ -1,4 +1,4 @@
-# 📱 منشورات وسائل التواصل الاجتماعي - MuayadGen 3.13.0
+# 📱 منشورات وسائل التواصل الاجتماعي - oqool 3.13.0
 
 **تاريخ النشر:** 2025-10-24
 
@@ -8,7 +8,7 @@
 
 ### المنشور الرئيسي:
 ```
-🚀 تم إطلاق MuayadGen 3.13.0!
+🚀 تم إطلاق oqool 3.13.0!
 
 أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد 🤖
 
@@ -18,18 +18,18 @@
 ✨ 100+ أمر CLI
 ✨ دعم 7 لغات برمجة
 
-📦 npm install -g @oqool/muayadgen
+📦 npm install -g @oqool/oqool
 
-#MuayadGen #AI #CodeGen #npm #OpenSource
+#oqool #AI #CodeGen #npm #OpenSource
 
-🔗 https://www.npmjs.com/package/@oqool/muayadgen
+🔗 https://www.npmjs.com/package/@oqool/oqool
 ```
 
 ### سلسلة تغريدات (Thread):
 
 **تغريدة 1:**
 ```
-🎉 الإعلان عن MuayadGen 3.13.0!
+🎉 الإعلان عن oqool 3.13.0!
 
 أداة CLI قوية تعتمد على الذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
@@ -48,7 +48,7 @@
 • دعم 7 لغات: JS, TS, Python, Go, Rust, Ruby, PHP
 
 مثال:
-muayadgen complete "دالة لحساب المجموع"
+oqool complete "دالة لحساب المجموع"
 
 🧵 2/6
 ```
@@ -63,7 +63,7 @@ muayadgen complete "دالة لحساب المجموع"
 • نظام Migrations كامل
 
 مثال:
-muayadgen db-schema "نظام مدونة" --orm prisma
+oqool db-schema "نظام مدونة" --orm prisma
 
 🧵 3/6
 ```
@@ -78,7 +78,7 @@ muayadgen db-schema "نظام مدونة" --orm prisma
 • تقارير HTML/JSON
 
 مثال:
-muayadgen api-load-test https://api.example.com -d 60 -c 50
+oqool api-load-test https://api.example.com -d 60 -c 50
 
 🧵 4/6
 ```
@@ -103,14 +103,14 @@ muayadgen api-load-test https://api.example.com -d 60 -c 50
 ```
 📦 التثبيت سهل:
 
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
 🎮 الاستخدام:
 
-muayadgen --help
+oqool --help
 mg complete "your prompt"
 
-🔗 https://www.npmjs.com/package/@oqool/muayadgen
+🔗 https://www.npmjs.com/package/@oqool/oqool
 
 جربها الآن! 🚀
 
@@ -123,7 +123,7 @@ mg complete "your prompt"
 
 ### المنشور الكامل:
 ```
-🎉 سعيد بالإعلان عن إطلاق MuayadGen 3.13.0
+🎉 سعيد بالإعلان عن إطلاق oqool 3.13.0
 
 أداة CLI متقدمة تعتمد على الذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
@@ -155,15 +155,15 @@ mg complete "your prompt"
 • توثيق واختبارات تلقائية
 
 📦 التثبيت:
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
 🎮 الاستخدام:
-muayadgen --help
+oqool --help
 mg complete "your prompt"
-muayadgen db-schema "blog system" --orm prisma
+oqool db-schema "blog system" --orm prisma
 
 🔗 الحزمة متاحة الآن على npm:
-https://www.npmjs.com/package/@oqool/muayadgen
+https://www.npmjs.com/package/@oqool/oqool
 
 #AI #ArtificialIntelligence #Development #OpenSource #npm #CLI #CodeGeneration #DatabaseIntegration #APITesting #DeveloperTools #Programming
 
@@ -174,7 +174,7 @@ https://www.npmjs.com/package/@oqool/muayadgen
 
 ### منشور مختصر:
 ```
-🚀 أطلقت للتو MuayadGen 3.13.0 على npm!
+🚀 أطلقت للتو oqool 3.13.0 على npm!
 
 أداة CLI بالذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
@@ -183,9 +183,9 @@ https://www.npmjs.com/package/@oqool/muayadgen
 ✨ API Testing
 ✨ 100+ CLI Commands
 
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
-🔗 https://www.npmjs.com/package/@oqool/muayadgen
+🔗 https://www.npmjs.com/package/@oqool/oqool
 
 #AI #Development #OpenSource
 ```
@@ -198,7 +198,7 @@ npm install -g @oqool/muayadgen
 ```
 @everyone 🎉
 
-**تم نشر MuayadGen v3.13.0 على npm!** 🚀
+**تم نشر oqool v3.13.0 على npm!** 🚀
 
 أداة CLI قوية تعتمد على الذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
@@ -224,19 +224,19 @@ npm install -g @oqool/muayadgen
 
 **📦 التثبيت:**
 \`\`\`bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 \`\`\`
 
 **🎮 الاستخدام:**
 \`\`\`bash
-muayadgen --help
+oqool --help
 mg complete "function to calculate sum"
-muayadgen db-schema "blog system" --orm prisma
-muayadgen api-test-create "User Tests"
+oqool db-schema "blog system" --orm prisma
+oqool api-test-create "User Tests"
 \`\`\`
 
 **🔗 الروابط:**
-• npm: https://www.npmjs.com/package/@oqool/muayadgen
+• npm: https://www.npmjs.com/package/@oqool/oqool
 • GitHub: [أضف الرابط]
 • الوثائق: [أضف الرابط]
 
@@ -250,18 +250,18 @@ React with:
 
 ### رسالة مختصرة:
 ```
-🎉 **MuayadGen v3.13.0 متاح الآن!**
+🎉 **oqool v3.13.0 متاح الآن!**
 
 أداة AI CLI لتوليد وتعديل الأكواد.
 
-📦 `npm install -g @oqool/muayadgen`
+📦 `npm install -g @oqool/oqool`
 
 ✨ AI Code Completion
 ✨ Database Integration
 ✨ API Testing
 ✨ 100+ Commands
 
-🔗 https://www.npmjs.com/package/@oqool/muayadgen
+🔗 https://www.npmjs.com/package/@oqool/oqool
 ```
 
 ---
@@ -270,7 +270,7 @@ React with:
 
 ### رسالة للفريق:
 ```
-:tada: *تم نشر MuayadGen v3.13.0!* :rocket:
+:tada: *تم نشر oqool v3.13.0!* :rocket:
 
 أداة CLI متقدمة بالذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
@@ -281,14 +281,14 @@ React with:
 :four: 100+ CLI Commands
 
 *التثبيت:*
-\`npm install -g @oqool/muayadgen\`
+\`npm install -g @oqool/oqool\`
 
 *الاستخدام:*
-\`muayadgen --help\`
+\`oqool --help\`
 \`mg complete "your prompt"\`
 
 *الروابط:*
-• npm: https://www.npmjs.com/package/@oqool/muayadgen
+• npm: https://www.npmjs.com/package/@oqool/oqool
 
 جربوها وأخبروني برأيكم! :muscle:
 ```
@@ -299,18 +299,18 @@ React with:
 
 ### الموضوع:
 ```
-🚀 إطلاق MuayadGen 3.13.0 - أداة AI لتوليد الأكواد
+🚀 إطلاق oqool 3.13.0 - أداة AI لتوليد الأكواد
 ```
 
 ### النص:
 ```
 مرحباً،
 
-سعيد بالإعلان عن إطلاق **MuayadGen 3.13.0** - أداة CLI متقدمة تعتمد على الذكاء الاصطناعي لتوليد وتعديل الأكواد.
+سعيد بالإعلان عن إطلاق **oqool 3.13.0** - أداة CLI متقدمة تعتمد على الذكاء الاصطناعي لتوليد وتعديل الأكواد.
 
-## ما هو MuayadGen؟
+## ما هو oqool؟
 
-MuayadGen هو أداة طرفية (CLI) قوية تساعدك في:
+oqool هو أداة طرفية (CLI) قوية تساعدك في:
 - توليد الأكواد بالذكاء الاصطناعي
 - إكمال الكود تلقائياً
 - إدارة قواعد البيانات
@@ -340,24 +340,24 @@ MuayadGen هو أداة طرفية (CLI) قوية تساعدك في:
 ## التثبيت:
 
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ## الاستخدام:
 
 ```bash
-muayadgen --help
+oqool --help
 mg complete "function to calculate sum"
-muayadgen db-schema "blog system" --orm prisma
+oqool db-schema "blog system" --orm prisma
 ```
 
 ## الروابط المفيدة:
 
-- [npm Package](https://www.npmjs.com/package/@oqool/muayadgen)
+- [npm Package](https://www.npmjs.com/package/@oqool/oqool)
 - [الوثائق](أضف الرابط)
 - [GitHub](أضف الرابط)
 
-جرب MuayadGen اليوم وأخبرني برأيك!
+جرب oqool اليوم وأخبرني برأيك!
 
 ---
 
@@ -371,18 +371,18 @@ moaid15@googlemail.com
 
 ### عنوان المنشور:
 ```
-[Release] MuayadGen 3.13.0 - AI-Powered CLI for Code Generation & Database Integration
+[Release] oqool 3.13.0 - AI-Powered CLI for Code Generation & Database Integration
 ```
 
 ### النص:
 ```
 Hi everyone! 👋
 
-I'm excited to announce the release of **MuayadGen 3.13.0** - an advanced CLI tool powered by AI for code generation and modification.
+I'm excited to announce the release of **oqool 3.13.0** - an advanced CLI tool powered by AI for code generation and modification.
 
-## 🎯 What is MuayadGen?
+## 🎯 What is oqool?
 
-MuayadGen is a comprehensive CLI tool that helps developers with:
+oqool is a comprehensive CLI tool that helps developers with:
 - **AI Code Completion**: Smart code completion with multiple suggestions
 - **Database Integration**: Support for 7 databases and 4 ORMs
 - **API Testing**: Advanced API testing with load testing capabilities
@@ -411,25 +411,25 @@ MuayadGen is a comprehensive CLI tool that helps developers with:
 ## 📦 Installation:
 
 ```bash
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 ```
 
 ## 🎮 Usage Examples:
 
 ```bash
 # AI Code Completion
-muayadgen complete "function to calculate sum"
+oqool complete "function to calculate sum"
 
 # Database Integration
-muayadgen db-schema "blog system with posts and comments" --orm prisma
+oqool db-schema "blog system with posts and comments" --orm prisma
 
 # API Testing
-muayadgen api-load-test https://api.example.com -d 60 -c 50
+oqool api-load-test https://api.example.com -d 60 -c 50
 ```
 
 ## 🔗 Links:
 
-- npm: https://www.npmjs.com/package/@oqool/muayadgen
+- npm: https://www.npmjs.com/package/@oqool/oqool
 - GitHub: [Add link]
 - Docs: [Add link]
 
@@ -446,38 +446,38 @@ Thanks for checking it out! 🚀
 
 ### العنوان:
 ```
-MuayadGen 3.13.0 - أداة AI لتوليد الأكواد | شرح كامل
+oqool 3.13.0 - أداة AI لتوليد الأكواد | شرح كامل
 ```
 
 ### الوصف:
 ```
-🚀 تعرف على MuayadGen - أداة CLI متقدمة بالذكاء الاصطناعي لتوليد وتعديل الأكواد!
+🚀 تعرف على oqool - أداة CLI متقدمة بالذكاء الاصطناعي لتوليد وتعديل الأكواد!
 
 في هذا الفيديو:
-✅ ما هو MuayadGen؟
+✅ ما هو oqool؟
 ✅ AI Code Completion
 ✅ Database Integration
 ✅ API Testing
 ✅ أمثلة عملية
 
 📦 التثبيت:
-npm install -g @oqool/muayadgen
+npm install -g @oqool/oqool
 
 🔗 الروابط:
-• npm: https://www.npmjs.com/package/@oqool/muayadgen
+• npm: https://www.npmjs.com/package/@oqool/oqool
 • GitHub: [أضف الرابط]
 • الوثائق: [أضف الرابط]
 
 ⏱️ الطوابع الزمنية:
 0:00 - المقدمة
-0:30 - ما هو MuayadGen؟
+0:30 - ما هو oqool؟
 1:00 - التثبيت
 2:00 - AI Code Completion
 5:00 - Database Integration
 8:00 - API Testing
 11:00 - الخلاصة
 
-#MuayadGen #AI #CodeGeneration #CLI #Programming
+#oqool #AI #CodeGeneration #CLI #Programming
 
 اشترك في القناة لمزيد من المحتوى! 🔔
 ```
@@ -488,7 +488,7 @@ npm install -g @oqool/muayadgen
 
 ### Caption:
 ```
-🚀 تم إطلاق MuayadGen 3.13.0!
+🚀 تم إطلاق oqool 3.13.0!
 
 أداة CLI قوية بالذكاء الاصطناعي 🤖
 
@@ -497,15 +497,15 @@ npm install -g @oqool/muayadgen
 ✨ API Testing
 ✨ 100+ Commands
 
-📦 npm install -g @oqool/muayadgen
+📦 npm install -g @oqool/oqool
 
 🔗 Link in bio
 
-#MuayadGen #AI #CodeGen #Programming #Developer #OpenSource #npm #CLI #Database #API #Tech #Coding
+#oqool #AI #CodeGen #Programming #Developer #OpenSource #npm #CLI #Database #API #Tech #Coding
 ```
 
 ---
 
 **تاريخ الإنشاء:** 2025-10-24
 **الحالة:** ✅ جاهز للنشر
-**الحزمة:** https://www.npmjs.com/package/@oqool/muayadgen
+**الحزمة:** https://www.npmjs.com/package/@oqool/oqool

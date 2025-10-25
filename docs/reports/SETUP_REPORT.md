@@ -355,5 +355,5 @@ npm run build
 
 ---
 
-**تم بواسطة:** Claude Code Assistant
+**تم بواسطة:** Oqool Assistant
 **التاريخ:** 24 أكتوبر 2025
