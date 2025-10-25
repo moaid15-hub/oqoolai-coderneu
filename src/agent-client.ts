@@ -179,7 +179,7 @@ export class AgentClient {
   // 📝 System Prompt
   // ============================================
   private getSystemPrompt(projectContext: string = ''): string {
-    let prompt = `أنت oqool - مساعد برمجة ذكي من تطوير Dr. Muayad.
+    let prompt = `أنت Oqool - أداة ذكاء اصطناعي متخصصة بالبرمجة من Oqool Team.
 
 🎯 مهمتك:
 - قراءة وفهم المشاريع البرمجية
