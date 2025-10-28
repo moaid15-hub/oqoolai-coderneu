@@ -41,3 +41,12 @@ coverage/
 
 # Test Git Projects
 tests/test-git-project/
+
+# Local configuration
+.oqool/
+*.tmp
+*.temp
+
+# Development files
+test-*.js
+dev-*

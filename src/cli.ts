@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
+import { BRANDING } from './branding.js';
 
 // تحميل متغيرات البيئة
 dotenv.config();
@@ -43,6 +44,11 @@ import { createProgressTracker } from './progress-tracker.js';
 import { createAICodeCompletion } from './ai-code-completion.js';
 import { createDatabaseIntegration } from './database-integration.js';
 import { createAPITesting } from './api-testing.js';
+import { createCodeLibrary } from './code-library.js';
+import { createAgentTeam } from './agent-team.js';
+import { createGodMode } from './god-mode.js';
+import { createAnalytics } from './analytics.js';
+import { createSelfLearningSystem } from './self-learning-system.js';
 import { registerNewCommands } from './cli-new-commands.js';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
@@ -339,8 +345,15 @@ program
       });
 
       ui.showBanner();
-      console.log(chalk.green('💬 محادثة تفاعلية مع Agent Tools - اكتب "exit" للخروج'));
-      console.log(chalk.gray('🛠️  الأدوات: قراءة/كتابة ملفات، تنفيذ أوامر، بحث في ملفات\n'));
+
+      console.log('');
+      console.log('');
+      console.log(BRANDING.commandsBox);
+      console.log('');
+      console.log('');
+      console.log(BRANDING.warningBox);
+      console.log('');
+      console.log(chalk.green.bold('   💬 محادثة تفاعلية مع Agent Tools') + chalk.gray(' - اكتب ') + chalk.yellow('"exit"') + chalk.gray(' للخروج\n'));
 
       // حلقة المحادثة
       while (true) {
@@ -348,7 +361,7 @@ program
           {
             type: 'input',
             name: 'message',
-            message: chalk.cyan('أنت:'),
+            message: chalk.white('    أنت:'),
             validate: (input) => input.trim().length > 0 || 'الرسالة لا يمكن أن تكون فارغة'
           }
         ]);
@@ -360,12 +373,33 @@ program
           break;
         }
 
-        // استخدام Agent مع Tools
-        const response = await agent.chat(userMessage);
+        // 🔥 اكتشاف ذكي: هل المهمة كبيرة؟
+        const isComplexTask = /\b(build|create|make|generate|develop|implement)\s+(full|complete|entire|whole|saas|platform|app|application|system|project)/i.test(userMessage);
 
-        console.log(chalk.magenta('\n🤖 Oqool:'));
-        console.log(chalk.white(response));
-        console.log();
+        if (isComplexTask) {
+          // استخدام God Mode تلقائياً
+          console.log(chalk.bold.red('\n🔥 مهمة معقدة مكتشفة - تفعيل GOD MODE!\n'));
+
+          const team = createAgentTeam({
+            apiKey: process.env.ANTHROPIC_API_KEY,
+            verbose: false // quiet mode في chat
+          });
+
+          const result = await team.collaborate(userMessage);
+
+          console.log(chalk.magenta('\n🤖 Oqool (God Mode):'));
+          console.log(chalk.green('\n✅ المشروع جاهز!\n'));
+          console.log(chalk.white(result.finalCode.substring(0, 500) + '...\n'));
+          console.log(chalk.cyan('💡 للحصول على المشروع الكامل، استخدم:\n'));
+          console.log(chalk.yellow(`   oqool god "${userMessage}"\n`));
+        } else {
+          // استخدام Agent عادي للمهام البسيطة
+          const response = await agent.chat(userMessage);
+
+          console.log(chalk.magenta('\n🤖 Oqool:'));
+          console.log(chalk.white(response));
+          console.log();
+        }
       }
 
     } catch (error: any) {
@@ -2479,6 +2513,386 @@ program
       await tracker.initialize();
 
       await tracker.showSummary();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// ============================================
+// 🔥 GOD MODE - الوضع الخارق
+// ============================================
+
+program
+  .command('god <task>')
+  .description('🚀 God Mode - بناء مشروع كامل بذكاء خارق')
+  .option('-o, --output <path>', 'مسار المشروع', './god-mode-project')
+  .action(async (task: string, options: any) => {
+    try {
+      if (!process.env.ANTHROPIC_API_KEY) {
+        console.log(chalk.red('\n❌ ANTHROPIC_API_KEY غير موجود في .env\n'));
+        return;
+      }
+
+      const godMode = createGodMode({
+        apiKey: process.env.ANTHROPIC_API_KEY,
+        outputPath: options.output,
+        verbose: true
+      });
+
+      const result = await godMode.execute(task);
+
+      // عرض النتائج
+      console.log(chalk.bold.green('\n🎉 God Mode Complete!\n'));
+      console.log(chalk.cyan('📊 Statistics:'));
+      console.log(chalk.white(`   Files: ${result.analytics.filesGenerated}`));
+      console.log(chalk.white(`   Lines: ${result.analytics.linesOfCode}`));
+      console.log(chalk.white(`   Tests: ${result.analytics.testsCreated} (${result.analytics.testsPassed} passed)`));
+      console.log(chalk.white(`   Security Score: ${result.security.score}/100`));
+      console.log(chalk.white(`   Quality Score: ${result.review.score}/100`));
+      console.log(chalk.white(`   Duration: ${(result.duration / 1000).toFixed(2)}s`));
+      console.log(chalk.cyan(`\n📁 Project: ${result.projectPath}\n`));
+
+      console.log(chalk.yellow('🚀 Quick Start:'));
+      console.log(chalk.white(`   cd ${result.projectPath}`));
+      console.log(chalk.white(`   npm install`));
+      console.log(chalk.white(`   npm start\n`));
+
+      // حفظ في Analytics
+      const analytics = createAnalytics(process.cwd());
+      await analytics.trackUsage({
+        command: 'god',
+        timestamp: Date.now(),
+        duration: result.duration,
+        success: true
+      });
+
+      // حفظ في Library
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      if (result.code.files.length > 0) {
+        await library.saveSnippet(
+          `god-${Date.now()}`,
+          result.code.files[0].content,
+          ['god-mode', ...result.architecture.tags],
+          `God Mode: ${task}`
+        );
+      }
+
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ God Mode failed:'), error.message);
+    }
+  });
+
+// ============================================
+// 📊 Analytics Commands
+// ============================================
+
+// أمر عرض التحليلات
+program
+  .command('analytics')
+  .alias('stats')
+  .description('عرض تحليلات الاستخدام')
+  .action(async () => {
+    try {
+      const analytics = createAnalytics(process.cwd());
+      await analytics.showAnalytics();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر تصدير البيانات
+program
+  .command('analytics-export')
+  .description('تصدير بيانات التحليلات')
+  .option('-f, --format <format>', 'التنسيق (json, csv)', 'json')
+  .option('-o, --output <file>', 'ملف الإخراج')
+  .action(async (options: any) => {
+    try {
+      const analytics = createAnalytics(process.cwd());
+      const data = await analytics.exportData(options.format);
+
+      if (options.output) {
+        const fs = await import('fs-extra');
+        await fs.writeFile(options.output, data);
+        console.log(chalk.green(`\n✅ تم التصدير إلى: ${options.output}\n`));
+      } else {
+        console.log(data);
+      }
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر إعادة تعيين التحليلات
+program
+  .command('analytics-reset')
+  .description('إعادة تعيين بيانات التحليلات')
+  .action(async () => {
+    try {
+      const { confirm } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'confirm',
+          message: 'هل أنت متأكد من إعادة تعيين جميع البيانات؟',
+          default: false
+        }
+      ]);
+
+      if (confirm) {
+        const analytics = createAnalytics(process.cwd());
+        await analytics.reset();
+      } else {
+        console.log(chalk.yellow('\n⚠️ تم الإلغاء\n'));
+      }
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// ============================================
+// 🧠 Self-Learning System Commands
+// ============================================
+
+// أمر عرض إحصائيات التعلم
+program
+  .command('learning-stats')
+  .alias('learn')
+  .description('عرض إحصائيات نظام التعلم الذاتي')
+  .action(async () => {
+    try {
+      if (!process.env.ANTHROPIC_API_KEY) {
+        console.log(chalk.red('\n❌ ANTHROPIC_API_KEY غير موجود في .env\n'));
+        return;
+      }
+
+      const learning = createSelfLearningSystem(process.env.ANTHROPIC_API_KEY);
+      await learning.showStats();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// ============================================
+// 👥 Agent Team Commands
+// ============================================
+
+// أمر تشغيل فريق Agents
+program
+  .command('team <task>')
+  .description('تشغيل فريق Agents للعمل على مهمة')
+  .option('-o, --output <path>', 'مسار حفظ النتيجة', './team-output')
+  .option('-q, --quiet', 'إخفاء التفاصيل (عرض النتيجة فقط)')
+  .action(async (task: string, options: any) => {
+    try {
+      if (!process.env.ANTHROPIC_API_KEY) {
+        console.log(chalk.red('\n❌ ANTHROPIC_API_KEY غير موجود في .env\n'));
+        return;
+      }
+
+      const team = createAgentTeam({
+        apiKey: process.env.ANTHROPIC_API_KEY,
+        verbose: !options.quiet
+      });
+
+      // بدء التعاون
+      const result = await team.collaborate(task);
+
+      // عرض الملخص
+      if (!options.quiet) {
+        await team.showSummary(result);
+      }
+
+      // حفظ النتيجة
+      if (options.output) {
+        await team.saveResult(result, options.output);
+      }
+
+      console.log(chalk.green('\n✅ انتهى الفريق من العمل بنجاح!\n'));
+
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// ============================================
+// 📚 Code Library Commands
+// ============================================
+
+// أمر حفظ snippet
+program
+  .command('snippet-save <name>')
+  .description('حفظ snippet في المكتبة')
+  .option('-t, --tags <tags>', 'التاجات (مفصولة بفاصلة)')
+  .option('-d, --description <desc>', 'وصف الـ snippet')
+  .action(async (name: string, options: any) => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      // طلب الكود من المستخدم
+      const { code } = await inquirer.prompt([
+        {
+          type: 'editor',
+          name: 'code',
+          message: 'اكتب الكود:',
+          default: '// اكتب الكود هنا...'
+        }
+      ]);
+
+      const tags = options.tags ? options.tags.split(',').map((t: string) => t.trim()) : [];
+
+      await library.saveSnippet(name, code, tags, options.description);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر البحث في snippets
+program
+  .command('snippet-search <query>')
+  .description('البحث في مكتبة الأكواد')
+  .action(async (query: string) => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      await library.searchSnippets(query);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر عرض جميع snippets
+program
+  .command('snippet-list')
+  .alias('snippets')
+  .description('عرض جميع الـ snippets المحفوظة')
+  .action(async () => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      await library.listAllSnippets();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر مشاركة snippet
+program
+  .command('snippet-share <name>')
+  .description('مشاركة snippet مع المجتمع')
+  .action(async (name: string) => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      const sharedPath = await library.shareSnippet(name);
+
+      if (sharedPath) {
+        console.log(chalk.green('\n✅ جاهز للمشاركة!'));
+        console.log(chalk.cyan(`\n📤 يمكنك الآن مشاركة هذا الملف:\n   ${sharedPath}\n`));
+      }
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر حذف snippet
+program
+  .command('snippet-delete <name>')
+  .description('حذف snippet من المكتبة')
+  .action(async (name: string) => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      const { confirm } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'confirm',
+          message: `هل أنت متأكد من حذف "${name}"؟`,
+          default: false
+        }
+      ]);
+
+      if (confirm) {
+        await library.deleteSnippet(name);
+      } else {
+        console.log(chalk.yellow('\n⚠️ تم إلغاء الحذف\n'));
+      }
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر عرض snippet محدد
+program
+  .command('snippet-show <name>')
+  .description('عرض محتوى snippet')
+  .action(async (name: string) => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      const snippet = await library.getSnippet(name);
+
+      if (snippet) {
+        console.log(chalk.cyan(`\n📄 ${snippet.name}`));
+        console.log(chalk.gray('─'.repeat(50)));
+        console.log(chalk.white(`\nاللغة: ${snippet.language}`));
+        console.log(chalk.yellow(`التاجات: ${snippet.tags.join(', ')}`));
+        if (snippet.description) {
+          console.log(chalk.gray(`الوصف: ${snippet.description}`));
+        }
+        console.log(chalk.gray(`\nعدد الاستخدام: ${snippet.usageCount}`));
+        console.log(chalk.gray('─'.repeat(50)));
+        console.log(chalk.white('\n' + snippet.code + '\n'));
+        console.log(chalk.gray('─'.repeat(50) + '\n'));
+      }
+    } catch (error: any) {
+      console.error(chalk.red('\n❌'), error.message);
+    }
+  });
+
+// أمر إحصائيات المكتبة
+program
+  .command('snippet-stats')
+  .description('عرض إحصائيات مكتبة الأكواد')
+  .action(async () => {
+    try {
+      const library = createCodeLibrary({
+        libraryPath: process.cwd()
+      });
+
+      const stats = await library.getStats();
+
+      console.log(chalk.cyan('\n📊 إحصائيات المكتبة:\n'));
+      console.log(chalk.white(`📚 إجمالي الـ snippets: ${chalk.green(stats.totalSnippets.toString())}`));
+      console.log(chalk.white(`📈 إجمالي الاستخدام: ${chalk.green(stats.totalUsage.toString())}`));
+
+      console.log(chalk.cyan('\n🗂️ حسب اللغة:'));
+      for (const [lang, count] of Object.entries(stats.byLanguage)) {
+        console.log(chalk.gray(`  ${lang}: ${count}`));
+      }
+
+      if (stats.mostUsed.length > 0) {
+        console.log(chalk.cyan('\n⭐ الأكثر استخداماً:'));
+        stats.mostUsed.forEach((s, i) => {
+          console.log(chalk.blue(`  ${i + 1}. ${s.name}`) + chalk.gray(` (${s.usageCount} مرة)`));
+        });
+      }
+
+      console.log();
     } catch (error: any) {
       console.error(chalk.red('\n❌'), error.message);
     }

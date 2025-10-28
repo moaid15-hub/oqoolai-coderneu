@@ -18,12 +18,14 @@
   },
   "keywords": [
     "oqool",
+    "oqoolai",
     "ai",
     "code-generator",
     "cli",
     "arabic"
   ],
-  "author": "Oqool Team",
+  "author": "Oqool AI Team",
+  "homepage": "https://oqoolai.com",
   "license": "MIT",
   "files": [
     "dist",

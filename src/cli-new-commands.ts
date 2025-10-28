@@ -9,6 +9,7 @@ import { ui } from './ui.js';
 import { createAICodeCompletion } from './ai-code-completion.js';
 import { createDatabaseIntegration } from './database-integration.js';
 import { createAPITesting } from './api-testing.js';
+import { createVersionGuardian } from './version-guardian.js';
 
 export function registerNewCommands(program: Command): void {
 
@@ -216,6 +217,289 @@ program
       console.log(chalk.green(`\n✅ ${suite.testCases.length} tests\n`));
     } catch (error: any) {
       console.error(chalk.red(error.message));
+    }
+  });
+
+// ========================================
+// أوامر Version Guardian - نظام حماية الإصدارات
+// ========================================
+
+program
+  .command('init')
+  .description('🛡️ تهيئة نظام حماية الإصدارات')
+  .option('--git', 'تفعيل تكامل Git', true)
+  .option('--auto-backup', 'تفعيل النسخ الاحتياطي التلقائي', true)
+  .option('--interval <minutes>', 'فترة النسخ الاحتياطي بالدقائق', '30')
+  .action(async (options: any) => {
+    try {
+      const client = await createClientFromConfig();
+      if (!client) return;
+
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd(),
+        enableGit: options.git,
+        autoBackup: options.autoBackup,
+        backupInterval: parseInt(options.interval)
+      });
+
+      await guardian.init();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('snapshot <name>')
+  .description('📸 إنشاء لقطة (snapshot) للمشروع')
+  .option('-d, --description <desc>', 'وصف اللقطة')
+  .action(async (name: string, options: any) => {
+    try {
+      const client = await createClientFromConfig();
+      if (!client) return;
+
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd(),
+        enableGit: true
+      });
+
+      await guardian.createSnapshot(name, options.description);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('list')
+  .alias('ls')
+  .description('📋 عرض جميع اللقطات')
+  .action(async () => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      const snapshots = await guardian.listSnapshots();
+
+      if (snapshots.length === 0) {
+        console.log(chalk.yellow('\n⚠️  لا توجد لقطات محفوظة'));
+        return;
+      }
+
+      console.log(chalk.bold.cyan('\n📸 اللقطات المحفوظة:\n'));
+
+      snapshots.forEach((snapshot, i) => {
+        const date = new Date(snapshot.timestamp).toLocaleString('ar-EG');
+        console.log(chalk.green(`${i + 1}. ${snapshot.name}`));
+        console.log(chalk.gray(`   ID: ${snapshot.id}`));
+        console.log(chalk.gray(`   التاريخ: ${date}`));
+        console.log(chalk.gray(`   الملفات: ${snapshot.metadata.totalFiles}`));
+        if (snapshot.description) {
+          console.log(chalk.gray(`   الوصف: ${snapshot.description}`));
+        }
+        if (snapshot.gitCommit) {
+          console.log(chalk.gray(`   Git: ${snapshot.gitCommit.substring(0, 7)}`));
+        }
+        console.log();
+      });
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('rollback <snapshotId>')
+  .alias('back')
+  .description('⏮️ الرجوع إلى لقطة سابقة')
+  .option('--no-backup', 'عدم إنشاء نسخة احتياطية قبل الرجوع')
+  .option('--tag <name>', 'إنشاء Git tag بعد الرجوع')
+  .action(async (snapshotId: string, options: any) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd(),
+        enableGit: true
+      });
+
+      await guardian.rollback(snapshotId, {
+        backup: options.backup !== false,
+        gitTag: options.tag
+      });
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('diff <snapshot1> <snapshot2>')
+  .description('🔍 مقارنة لقطتين')
+  .action(async (snapshot1: string, snapshot2: string) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.showDiff(snapshot1, snapshot2);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('backup <name>')
+  .description('💾 إنشاء نسخة احتياطية')
+  .option('--compress', 'ضغط النسخة الاحتياطية')
+  .option('--cloud', 'رفع النسخة إلى السحابة')
+  .action(async (name: string, options: any) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd(),
+        cloudBackup: options.cloud
+      });
+
+      await guardian.createBackup(name, {
+        compress: options.compress,
+        cloud: options.cloud
+      });
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('restore <backupName>')
+  .description('📦 استعادة نسخة احتياطية')
+  .action(async (backupName: string) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.restoreBackup(backupName);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('history')
+  .description('📜 عرض سجل التغييرات')
+  .option('-l, --limit <number>', 'عدد السجلات المعروضة')
+  .action(async (options: any) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.showHistory(options.limit ? parseInt(options.limit) : undefined);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('archaeology <filePath>')
+  .alias('arch')
+  .description('🏺 عرض تاريخ ملف معين')
+  .action(async (filePath: string) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.showFileArchaeology(filePath);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('analytics')
+  .alias('stats')
+  .description('📊 عرض تحليلات الإصدارات')
+  .action(async () => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.showAnalytics();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('suggestions')
+  .alias('suggest')
+  .description('💡 عرض اقتراحات ذكية')
+  .action(async () => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.showSuggestions();
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('timeline')
+  .description('📅 عرض الخط الزمني المرئي')
+  .option('-d, --days <number>', 'عدد الأيام المعروضة')
+  .action(async (options: any) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.showTimeline(options.days ? parseInt(options.days) : undefined);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('export <snapshotId> <outputPath>')
+  .description('📤 تصدير لقطة')
+  .action(async (snapshotId: string, outputPath: string) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.exportSnapshot(snapshotId, outputPath);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
+    }
+  });
+
+program
+  .command('import <importPath>')
+  .description('📥 استيراد لقطة')
+  .action(async (importPath: string) => {
+    try {
+      const guardian = createVersionGuardian({
+        apiKey: process.env.ANTHROPIC_API_KEY || '',
+        projectPath: process.cwd()
+      });
+
+      await guardian.importSnapshot(importPath);
+    } catch (error: any) {
+      console.error(chalk.red('\n❌ خطأ:'), error.message);
     }
   });
 

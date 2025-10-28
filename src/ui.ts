@@ -8,6 +8,7 @@ import ora, { Ora } from 'ora';
 import boxen from 'boxen';
 import Table from 'cli-table3';
 import gradient from 'gradient-string';
+import { BRANDING } from './branding.js';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -40,37 +41,11 @@ export class UI {
 
   // عرض شعار احترافي مع ASCII Art
   showBanner(): void {
-    const banner = `
- ██████╗  ██████╗  ██████╗  ██████╗ ██╗
-██╔═══██╗██╔═══██╗██╔═══██╗██╔═══██╗██║
-██║   ██║██║   ██║██║   ██║██║   ██║██║
-██║   ██║██║▄▄ ██║██║   ██║██║   ██║██║
-╚██████╔╝╚██████╔╝╚██████╔╝╚██████╔╝███████╗
- ╚═════╝  ╚══▀▀═╝  ╚═════╝  ╚═════╝ ╚══════╝`;
-
-    console.log(this.gradients.ocean(banner));
-
-    // Read version from package.json
-    const packageJson = JSON.parse(
-      readFileSync(join(__dirname, '../package.json'), 'utf-8')
-    );
-
-    const infoBox = boxen(
-      this.colors.gold.bold('أداة ذكاء اصطناعي متقدمة لتوليد وتعديل الأكواد') + '\n\n' +
-      this.colors.dim('النسخة: ') + this.colors.primary.bold(packageJson.version) + '\n' +
-      this.colors.dim('الفريق: ') + this.colors.gold('Oqool Team') + '\n' +
-      this.colors.dim('الموقع: ') + this.colors.info('https://www.oqool.net/'),
-      {
-        padding: 1,
-        margin: 1,
-        borderStyle: 'round',
-        borderColor: '#fbbf24',
-        title: '🧠 oqool',
-        titleAlignment: 'center',
-      }
-    );
-
-    console.log(infoBox);
+    // استخدام نظام Branding الجديد
+    console.log(BRANDING.logo);
+    console.log('');
+    console.log('');
+    console.log(BRANDING.infoBox);
   }
 
   // رسالة ترحيب محسّنة
