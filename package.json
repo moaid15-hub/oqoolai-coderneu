@@ -1,66 +1,83 @@
 {
-  "name": "@oqool/oqool",
-  "version": "5.0.0",
-  "description": "AI Coding Agent - منافس Cursor و Windsurf - Context Management + Intelligent Planning + Testing + Git Integration",
-  "type": "module",
-  "main": "./dist/index.js",
-  "bin": {
-    "oqool": "./bin/oqool.js",
-    "og": "./bin/og",
-    "ogr": "./bin/ogr",
-    "ogt": "./bin/ogt",
-    "ogg": "./bin/ogg"
-  },
+  "name": "oqoolai-monorepo",
+  "version": "2.0.0",
+  "description": "🚀 OqoolAI Cloud IDE - Advanced AI-Powered Development Environment with Monaco Editor, Interactive Terminal, and Real-time Collaboration",
+  "private": true,
+  "workspaces": [
+    "packages/cli",
+    "packages/cloud-editor/frontend",
+    "packages/cloud-editor/backend", 
+    "packages/shared"
+  ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "test": "jest"
+    "build": "npm run build --workspaces",
+    "dev": "npm run dev --workspaces",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "dev:cli": "npm run dev --workspace=packages/cli",
+    "dev:frontend": "npm run dev --workspace=packages/cloud-editor/frontend",
+    "dev:backend": "npm run dev --workspace=packages/cloud-editor/backend",
+    "dev:cloud": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:cli": "npm run build --workspace=packages/cli",
+    "build:frontend": "npm run build --workspace=packages/cloud-editor/frontend",
+    "build:backend": "npm run build --workspace=packages/cloud-editor/backend",
+    "build:cloud": "npm run build:backend && npm run build:frontend",
+    "start:cloud": "npm run start --workspace=packages/cloud-editor/backend",
+    "install:all": "npm install && npm install --workspaces",
+    "upgrade:all": "npm update && npm update --workspaces"
   },
   "keywords": [
-    "oqool",
     "oqoolai",
-    "ai",
-    "code-generator",
-    "cli",
-    "arabic"
+    "cloud-ide",
+    "monaco-editor", 
+    "react",
+    "typescript",
+    "ai-powered",
+    "code-editor",
+    "terminal",
+    "file-explorer",
+    "real-time",
+    "collaboration",
+    "vscode-like",
+    "web-ide",
+    "monorepo",
+    "arabic",
+    "cli-tools"
   ],
-  "author": "Oqool AI Team",
-  "homepage": "https://oqoolai.com",
-  "license": "MIT",
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.67.0",
-    "@babel/parser": "^7.28.5",
-    "@babel/traverse": "^7.28.5",
-    "@babel/types": "^7.28.5",
-    "axios": "^1.6.2",
-    "boxen": "^8.0.1",
-    "chalk": "^5.6.2",
-    "cli-table3": "^0.6.5",
-    "commander": "^11.1.0",
-    "dotenv": "^17.2.3",
-    "fs-extra": "^11.3.2",
-    "glob": "^10.4.5",
-    "gradient-string": "^3.0.0",
-    "ignore": "^5.3.0",
-    "inquirer": "^9.3.8",
-    "ora": "^7.0.1",
-    "p-limit": "^5.0.0"
+  "author": {
+    "name": "Oqool AI Team",
+    "email": "team@oqoolai.com",
+    "url": "https://oqoolai.com"
   },
+  "contributors": [
+    "Amir Muhammad <amir@oqoolai.com>",
+    "OqoolAI Development Team"
+  ],
+  "homepage": "https://oqoolai.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oqoolai/cloud-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oqoolai/cloud-editor/issues",
+    "email": "support@oqoolai.com"
+  },
+  "license": "MIT",
   "devDependencies": {
-    "@types/babel__core": "^7.20.5",
-    "@types/babel__traverse": "^7.28.0",
-    "@types/fs-extra": "^11.0.4",
-    "@types/inquirer": "^9.0.7",
     "@types/node": "^20.10.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.5"
   },
   "engines": {
-    "node": ">=18.0.0"
-  }
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "volta": {
+    "node": "20.18.1",
+    "npm": "10.8.2"
+  },
+  "packageManager": "npm@10.8.2"
 }

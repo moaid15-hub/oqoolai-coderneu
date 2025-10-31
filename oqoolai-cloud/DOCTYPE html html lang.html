@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #1e1e1e;
+            color: #cccccc;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #323233;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            border-bottom: 1px solid #2d2d30;
+        }
+
+        .menu-items {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            padding: 5px 8px;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: #3e3e42;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            border-radius: 4px;
+            min-width: 250px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            padding: 4px 0;
+            margin-top: 2px;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 8px 15px;
+            font-size: 13px;
+            color: #cccccc;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-item:hover {
+            background: #094771;
+        }
+
+        .dropdown-separator {
+            height: 1px;
+            background: #555;
+            margin: 4px 0;
+        }
+
+        .shortcut-hint {
+            font-size: 11px;
+            color: #858585;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            padding: 6px 12px;
+            border-radius: 4px;
+            color: #cccccc;
+            font-size: 13px;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .language-selector {
+            margin-left: 15px;
+        }
+
+        .language-selector select {
+            cursor: pointer;
+        }
+
+        .language-selector select:hover {
+            background: #454545;
+        }
+
+        .language-selector select:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            height: calc(100vh - 35px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 48px;
+            background: #333333;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #2d2d30;
+        }
+
+        .sidebar-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            color: #858585;
+        }
+
+        .sidebar-icon:hover {
+            color: #ffffff;
+        }
+
+        .sidebar-icon.active {
+            color: #ffffff;
+            border-left: 2px solid #007acc;
+        }
+
+        .sidebar-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Explorer Panel */
+        .explorer-panel {
+            width: 300px;
+            background: #252526;
+            border-right: 1px solid #2d2d30;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explorer-header {
+            padding: 10px 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #cccccc;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .explorer-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+
+        .folder-item, .file-item {
+            padding: 4px 20px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #cccccc;
+        }
+
+        .folder-item:hover, .file-item:hover {
+            background: #2a2d2e;
+        }
+
+        .folder-item.expanded {
+            font-weight: 500;
+        }
+
+        .folder-item svg, .file-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .folder-children {
+            padding-left: 15px;
+        }
+
+        /* Editor Area */
+        .editor-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+        }
+
+        .tabs-bar {
+            background: #2d2d2d;
+            height: 35px;
+            display: flex;
+            border-bottom: 1px solid #2d2d30;
+        }
+
+        .tab {
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            border-right: 1px solid #2d2d30;
+            background: #2d2d2d;
+            color: #969696;
+        }
+
+        .tab.active {
+            background: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .tab:hover {
+            background: #323233;
+        }
+
+        .tab-close {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .tab-close:hover {
+            background: #5a5a5a;
+        }
+
+        /* Chat Panel */
+        .chat-panel {
+            width: 400px;
+            background: #252526;
+            border-left: 1px solid #2d2d30;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            height: 35px;
+            background: #2d2d2d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            border-bottom: 1px solid #2d2d30;
+        }
+
+        .chat-tabs {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+        }
+
+        .chat-tab {
+            cursor: pointer;
+            padding: 8px 0;
+            color: #969696;
+            border-bottom: 2px solid transparent;
+        }
+
+        .chat-tab.active {
+            color: #ffffff;
+            border-bottom-color: #007acc;
+        }
+
+        .chat-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .chat-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            opacity: 0.3;
+        }
+
+        .chat-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .chat-subtitle {
+            font-size: 13px;
+            color: #858585;
+            margin-bottom: 20px;
+        }
+
+        .chat-link {
+            color: #4daafc;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .chat-link:hover {
+            text-decoration: underline;
+        }
+
+        .shortcuts {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #858585;
+        }
+
+        .shortcut-item {
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .shortcut-keys {
+            display: flex;
+            gap: 5px;
+        }
+
+        .key {
+            background: #3c3c3c;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            border: 1px solid #555;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            border-top: 1px solid #2d2d30;
+        }
+
+        .chat-input {
+            width: 100%;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            padding: 10px;
+            border-radius: 4px;
+            color: #cccccc;
+            font-size: 13px;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .chat-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .agent-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        .agent-selector select {
+            background: #3c3c3c;
+            border: 1px solid #555;
+            padding: 5px 10px;
+            border-radius: 3px;
+            color: #cccccc;
+            font-size: 12px;
+        }
+
+        .send-button {
+            background: #007acc;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .send-button:hover {
+            background: #0098ff;
+        }
+
+        /* Editor Content */
+        .editor-content {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            opacity: 0.5;
+        }
+
+        .welcome-icon {
+            font-size: 120px;
+        }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            height: 22px;
+            background: #007acc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+        .bottom-left {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .bottom-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 2px 5px;
+        }
+
+        .status-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #424242;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4e4e4e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="menu-items">
+            <div class="menu-item" data-i18n="menu.file">
+                File
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.new">New File</span>
+                        <span class="shortcut-hint">Ctrl+N</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.open">Open File...</span>
+                        <span class="shortcut-hint">Ctrl+O</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.openFolder">Open Folder...</span>
+                        <span class="shortcut-hint">Ctrl+K Ctrl+O</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.save">Save</span>
+                        <span class="shortcut-hint">Ctrl+S</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.saveAs">Save As...</span>
+                        <span class="shortcut-hint">Ctrl+Shift+S</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.close">Close Editor</span>
+                        <span class="shortcut-hint">Ctrl+W</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.file.exit">Exit</span>
+                        <span class="shortcut-hint">Ctrl+Q</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-i18n="menu.edit">
+                Edit
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.undo">Undo</span>
+                        <span class="shortcut-hint">Ctrl+Z</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.redo">Redo</span>
+                        <span class="shortcut-hint">Ctrl+Y</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.cut">Cut</span>
+                        <span class="shortcut-hint">Ctrl+X</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.copy">Copy</span>
+                        <span class="shortcut-hint">Ctrl+C</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.paste">Paste</span>
+                        <span class="shortcut-hint">Ctrl+V</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.find">Find</span>
+                        <span class="shortcut-hint">Ctrl+F</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.edit.replace">Replace</span>
+                        <span class="shortcut-hint">Ctrl+H</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-i18n="menu.selection">
+                Selection
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.selection.selectAll">Select All</span>
+                        <span class="shortcut-hint">Ctrl+A</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.selection.expandSelection">Expand Selection</span>
+                        <span class="shortcut-hint">Shift+Alt+→</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.selection.shrinkSelection">Shrink Selection</span>
+                        <span class="shortcut-hint">Shift+Alt+←</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.selection.copyLineUp">Copy Line Up</span>
+                        <span class="shortcut-hint">Shift+Alt+↑</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.selection.copyLineDown">Copy Line Down</span>
+                        <span class="shortcut-hint">Shift+Alt+↓</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-i18n="menu.view">
+                View
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.view.commandPalette">Command Palette...</span>
+                        <span class="shortcut-hint">Ctrl+Shift+P</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.view.openView">Open View...</span>
+                        <span class="shortcut-hint">Ctrl+Q</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.view.explorer">Explorer</span>
+                        <span class="shortcut-hint">Ctrl+Shift+E</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.view.search">Search</span>
+                        <span class="shortcut-hint">Ctrl+Shift+F</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.view.extensions">Extensions</span>
+                        <span class="shortcut-hint">Ctrl+Shift+X</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.view.terminal">Terminal</span>
+                        <span class="shortcut-hint">Ctrl+`</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-i18n="menu.go">
+                Go
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.go.back">Back</span>
+                        <span class="shortcut-hint">Ctrl+Alt+←</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.go.forward">Forward</span>
+                        <span class="shortcut-hint">Ctrl+Alt+→</span>
+                    </div>
+                    <div class="dropdown-separator"></div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.go.goToFile">Go to File...</span>
+                        <span class="shortcut-hint">Ctrl+P</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <span data-i18n="menu.go.goToLine">Go to Line...</span>
+                        <span class="shortcut-hint">Ctrl+G</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search" data-i18n-placeholder="search.placeholder">
+        </div>
+        <div class="language-selector">
+            <select id="languageSelect" style="background: #3c3c3c; border: 1px solid #555; padding: 4px 8px; border-radius: 3px; color: #cccccc; font-size: 12px; cursor: pointer;">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-icon active">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/>
+                </svg>
+            </div>
+            <div class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/>
+                </svg>
+            </div>
+            <div class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 14l5-5 5 5z"/>
+                </svg>
+            </div>
+            <div class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Explorer Panel -->
+        <div class="explorer-panel">
+            <div class="explorer-header">
+                <span data-i18n="explorer.title">EXPLORER</span>
+                <span>...</span>
+            </div>
+            <div class="explorer-content">
+                <div class="folder-item expanded">
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M6 4v8l6-4z"/>
+                    </svg>
+                    PROJECT_NAME
+                </div>
+                <div class="folder-children">
+                    <div class="folder-item">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M6 4v8l6-4z"/>
+                        </svg>
+                        src
+                    </div>
+                    <div class="folder-item">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M6 4v8l6-4z"/>
+                        </svg>
+                        public
+                    </div>
+                    <div class="folder-item">
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M6 4v8l6-4z"/>
+                        </svg>
+                        node_modules
+                    </div>
+                    <div class="file-item">
+                        <svg viewBox="0 0 16 16" fill="#858585">
+                            <path d="M4 1h8l3 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        package.json
+                    </div>
+                    <div class="file-item">
+                        <svg viewBox="0 0 16 16" fill="#858585">
+                            <path d="M4 1h8l3 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        tsconfig.json
+                    </div>
+                    <div class="file-item">
+                        <svg viewBox="0 0 16 16" fill="#858585">
+                            <path d="M4 1h8l3 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        README.md
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="editor-area">
+            <div class="tabs-bar">
+                <!-- Tabs will be added here -->
+            </div>
+            <div class="editor-content">
+                <div class="welcome-screen">
+                    <!-- Empty welcome screen -->
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <div class="bottom-left">
+                    <div class="status-item">⚡ main</div>
+                    <div class="status-item">✓ 0 ⚠ 0</div>
+                </div>
+                <div class="bottom-right">
+                    <div class="status-item">UTF-8</div>
+                    <div class="status-item">LF</div>
+                    <div class="status-item">TypeScript</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Panel -->
+        <div class="chat-panel">
+            <div class="chat-header">
+                <div class="chat-tabs">
+                    <div class="chat-tab active" data-i18n="chat.tab">CHAT</div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <span style="cursor: pointer;">+</span>
+                    <span style="cursor: pointer;">⚙</span>
+                    <span style="cursor: pointer;">...</span>
+                </div>
+            </div>
+            <div class="chat-content">
+                <div class="chat-icon">
+                    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="30" y="30" width="60" height="60" rx="5"/>
+                        <path d="M45 50 L55 60 L75 40"/>
+                    </svg>
+                </div>
+                <div class="chat-title" data-i18n="chat.title">Build with agent mode</div>
+                <div class="chat-subtitle" data-i18n="chat.subtitle">AI responses may be inaccurate.</div>
+                <a href="#" class="chat-link" data-i18n="chat.link">Generate Agent Instructions</a>
+                <div class="chat-subtitle" style="margin-top: 5px;" data-i18n="chat.onboard">to onboard AI onto your codebase.</div>
+                
+                <div class="shortcuts">
+                    <div class="shortcut-item">
+                        <span data-i18n="shortcuts.commands">Show All Commands</span>
+                        <div class="shortcut-keys">
+                            <span class="key">Ctrl</span>
+                            <span class="key">Shift</span>
+                            <span class="key">P</span>
+                        </div>
+                    </div>
+                    <div class="shortcut-item">
+                        <span data-i18n="shortcuts.file">Go to File</span>
+                        <div class="shortcut-keys">
+                            <span class="key">Ctrl</span>
+                            <span class="key">P</span>
+                        </div>
+                    </div>
+                    <div class="shortcut-item">
+                        <span data-i18n="shortcuts.chat">Open Chat</span>
+                        <div class="shortcut-keys">
+                            <span class="key">Ctrl</span>
+                            <span class="key">Alt</span>
+                            <span class="key">I</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <textarea class="chat-input" data-i18n-placeholder="chat.placeholder" placeholder="Add context (#), extensions (@), commands" rows="3"></textarea>
+                <div class="chat-buttons">
+                    <div class="agent-selector">
+                        <span data-i18n="chat.agent">Agent</span>
+                        <select>
+                            <option>Claude Sonnet 4.5</option>
+                            <option>Claude Opus 4</option>
+                            <option>ChatGPT-4</option>
+                            <option>ChatGPT-4 Turbo</option>
+                            <option>GPT-3.5 Turbo</option>
+                            <option>DeepSeek V3</option>
+                            <option>Gemini Pro</option>
+                            <option>Gemini Ultra</option>
+                            <option>Llama 3</option>
+                            <option>Mistral Large</option>
+                        </select>
+                    </div>
+                    <button class="send-button">
+                        <span>▶</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script loaded!');
+        
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM ready!');
+            
+            // Dropdown menu handling - Click to toggle
+            const menuItems = document.querySelectorAll('.menu-item');
+            console.log('Found menu items:', menuItems.length);
+            
+            menuItems.forEach(menuItem => {
+                menuItem.addEventListener('click', function(e) {
+                    console.log('Menu item clicked!');
+                    e.stopPropagation();
+                    
+                    const dropdown = this.querySelector('.dropdown-menu');
+                    console.log('Dropdown found:', dropdown);
+                    
+                    const isShowing = dropdown && dropdown.classList.contains('show');
+                    
+                    // Close all dropdowns first
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    
+                    // Toggle this dropdown
+                    if (dropdown && !isShowing) {
+                        console.log('Showing dropdown!');
+                        dropdown.classList.add('show');
+                    }
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+            });
+
+            // Prevent dropdown from closing when clicking inside it
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        });
+
+        // Translations
+        const translations = {
+            en: {
+                'menu.file': 'File',
+                'menu.file.new': 'New File',
+                'menu.file.open': 'Open File...',
+                'menu.file.openFolder': 'Open Folder...',
+                'menu.file.save': 'Save',
+                'menu.file.saveAs': 'Save As...',
+                'menu.file.close': 'Close Editor',
+                'menu.file.exit': 'Exit',
+                'menu.edit': 'Edit',
+                'menu.edit.undo': 'Undo',
+                'menu.edit.redo': 'Redo',
+                'menu.edit.cut': 'Cut',
+                'menu.edit.copy': 'Copy',
+                'menu.edit.paste': 'Paste',
+                'menu.edit.find': 'Find',
+                'menu.edit.replace': 'Replace',
+                'menu.selection': 'Selection',
+                'menu.selection.selectAll': 'Select All',
+                'menu.selection.expandSelection': 'Expand Selection',
+                'menu.selection.shrinkSelection': 'Shrink Selection',
+                'menu.selection.copyLineUp': 'Copy Line Up',
+                'menu.selection.copyLineDown': 'Copy Line Down',
+                'menu.view': 'View',
+                'menu.view.commandPalette': 'Command Palette...',
+                'menu.view.openView': 'Open View...',
+                'menu.view.explorer': 'Explorer',
+                'menu.view.search': 'Search',
+                'menu.view.extensions': 'Extensions',
+                'menu.view.terminal': 'Terminal',
+                'menu.go': 'Go',
+                'menu.go.back': 'Back',
+                'menu.go.forward': 'Forward',
+                'menu.go.goToFile': 'Go to File...',
+                'menu.go.goToLine': 'Go to Line...',
+                'search.placeholder': 'Search',
+                'explorer.title': 'EXPLORER',
+                'chat.tab': 'CHAT',
+                'chat.title': 'Build with agent mode',
+                'chat.subtitle': 'AI responses may be inaccurate.',
+                'chat.link': 'Generate Agent Instructions',
+                'chat.onboard': 'to onboard AI onto your codebase.',
+                'chat.placeholder': 'Add context (#), extensions (@), commands',
+                'chat.agent': 'Agent',
+                'shortcuts.commands': 'Show All Commands',
+                'shortcuts.file': 'Go to File',
+                'shortcuts.chat': 'Open Chat'
+            },
+            ar: {
+                'menu.file': 'ملف',
+                'menu.file.new': 'ملف جديد',
+                'menu.file.open': 'فتح ملف...',
+                'menu.file.openFolder': 'فتح مجلد...',
+                'menu.file.save': 'حفظ',
+                'menu.file.saveAs': 'حفظ باسم...',
+                'menu.file.close': 'إغلاق المحرر',
+                'menu.file.exit': 'خروج',
+                'menu.edit': 'تحرير',
+                'menu.edit.undo': 'تراجع',
+                'menu.edit.redo': 'إعادة',
+                'menu.edit.cut': 'قص',
+                'menu.edit.copy': 'نسخ',
+                'menu.edit.paste': 'لصق',
+                'menu.edit.find': 'بحث',
+                'menu.edit.replace': 'استبدال',
+                'menu.selection': 'تحديد',
+                'menu.selection.selectAll': 'تحديد الكل',
+                'menu.selection.expandSelection': 'توسيع التحديد',
+                'menu.selection.shrinkSelection': 'تقليص التحديد',
+                'menu.selection.copyLineUp': 'نسخ السطر لأعلى',
+                'menu.selection.copyLineDown': 'نسخ السطر لأسفل',
+                'menu.view': 'عرض',
+                'menu.view.commandPalette': 'لوحة الأوامر...',
+                'menu.view.openView': 'فتح عرض...',
+                'menu.view.explorer': 'المستكشف',
+                'menu.view.search': 'بحث',
+                'menu.view.extensions': 'الملحقات',
+                'menu.view.terminal': 'الطرفية',
+                'menu.go': 'انتقال',
+                'menu.go.back': 'رجوع',
+                'menu.go.forward': 'تقدم',
+                'menu.go.goToFile': 'انتقل إلى الملف...',
+                'menu.go.goToLine': 'انتقل إلى السطر...',
+                'search.placeholder': 'بحث',
+                'explorer.title': 'المستكشف',
+                'chat.tab': 'محادثة',
+                'chat.title': 'البناء مع وضع الوكيل',
+                'chat.subtitle': 'قد تكون استجابات الذكاء الاصطناعي غير دقيقة.',
+                'chat.link': 'إنشاء تعليمات الوكيل',
+                'chat.onboard': 'لإضافة الذكاء الاصطناعي إلى قاعدة التعليمات البرمجية الخاصة بك.',
+                'chat.placeholder': 'أضف سياق (#)، ملحقات (@)، أوامر',
+                'chat.agent': 'الوكيل',
+                'shortcuts.commands': 'عرض جميع الأوامر',
+                'shortcuts.file': 'انتقل إلى الملف',
+                'shortcuts.chat': 'فتح المحادثة'
+            },
+            de: {
+                'menu.file': 'Datei',
+                'menu.file.new': 'Neue Datei',
+                'menu.file.open': 'Datei öffnen...',
+                'menu.file.openFolder': 'Ordner öffnen...',
+                'menu.file.save': 'Speichern',
+                'menu.file.saveAs': 'Speichern unter...',
+                'menu.file.close': 'Editor schließen',
+                'menu.file.exit': 'Beenden',
+                'menu.edit': 'Bearbeiten',
+                'menu.edit.undo': 'Rückgängig',
+                'menu.edit.redo': 'Wiederholen',
+                'menu.edit.cut': 'Ausschneiden',
+                'menu.edit.copy': 'Kopieren',
+                'menu.edit.paste': 'Einfügen',
+                'menu.edit.find': 'Suchen',
+                'menu.edit.replace': 'Ersetzen',
+                'menu.selection': 'Auswahl',
+                'menu.selection.selectAll': 'Alles auswählen',
+                'menu.selection.expandSelection': 'Auswahl erweitern',
+                'menu.selection.shrinkSelection': 'Auswahl verkleinern',
+                'menu.selection.copyLineUp': 'Zeile nach oben kopieren',
+                'menu.selection.copyLineDown': 'Zeile nach unten kopieren',
+                'menu.view': 'Ansicht',
+                'menu.view.commandPalette': 'Befehlspalette...',
+                'menu.view.openView': 'Ansicht öffnen...',
+                'menu.view.explorer': 'Explorer',
+                'menu.view.search': 'Suchen',
+                'menu.view.extensions': 'Erweiterungen',
+                'menu.view.terminal': 'Terminal',
+                'menu.go': 'Gehe zu',
+                'menu.go.back': 'Zurück',
+                'menu.go.forward': 'Vorwärts',
+                'menu.go.goToFile': 'Gehe zu Datei...',
+                'menu.go.goToLine': 'Gehe zu Zeile...',
+                'search.placeholder': 'Suchen',
+                'explorer.title': 'EXPLORER',
+                'chat.tab': 'CHAT',
+                'chat.title': 'Mit Agentenmodus erstellen',
+                'chat.subtitle': 'KI-Antworten können ungenau sein.',
+                'chat.link': 'Agentenanweisungen generieren',
+                'chat.onboard': 'um KI in Ihre Codebasis zu integrieren.',
+                'chat.placeholder': 'Kontext hinzufügen (#), Erweiterungen (@), Befehle',
+                'chat.agent': 'Agent',
+                'shortcuts.commands': 'Alle Befehle anzeigen',
+                'shortcuts.file': 'Gehe zu Datei',
+                'shortcuts.chat': 'Chat öffnen'
+            }
+        };
+
+        // Change language function
+        function changeLanguage(lang) {
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+
+            // Update direction for Arabic
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+
+            // Save preference
+            localStorage.setItem('language', lang);
+        }
+
+        // Language selector event
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            changeLanguage(this.value);
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('language') || 'en';
+        document.getElementById('languageSelect').value = savedLang;
+        changeLanguage(savedLang);
+
+        // Add interactivity here if needed
+        document.querySelectorAll('.folder-item').forEach(folder => {
+            folder.addEventListener('click', function() {
+                this.classList.toggle('expanded');
+            });
+        });
+
+        document.querySelectorAll('.chat-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.chat-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.sidebar-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-icon').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
